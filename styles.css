@@ -88,6 +88,7 @@ a {
 .profile,
 .about,
 .education,
+.cta,
 .footer {
   width: min(calc(100% - 2rem), var(--max-width));
   margin: 0 auto;
@@ -422,7 +423,8 @@ a {
 
 .profile,
 .about,
-.education {
+.education,
+.cta {
   padding: 3rem 0 1rem;
 }
 
@@ -458,6 +460,26 @@ a {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.1rem;
+}
+
+.education-groups {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 0 0 1.4rem;
+}
+
+.education-groups span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0.65rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 700;
 }
 
 .info-card,
@@ -579,6 +601,48 @@ a {
   margin: 0.3rem 0;
 }
 
+.cta {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.cta-copy,
+.cta-actions {
+  background: var(--surface);
+  backdrop-filter: blur(24px);
+  border: 1px solid var(--surface-border);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius-lg);
+}
+
+.cta-copy {
+  padding: 1.6rem;
+}
+
+.cta-copy h2 {
+  margin: 0 0 1rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.04;
+}
+
+.cta-copy p:last-child {
+  margin-bottom: 0;
+}
+
+.cta-actions {
+  display: grid;
+  gap: 0.9rem;
+  padding: 1.2rem;
+  min-width: min(100%, 300px);
+}
+
+.cta-actions .button {
+  width: 100%;
+}
+
 .footer {
   display: flex;
   justify-content: space-between;
@@ -663,6 +727,10 @@ a {
   .footer {
     flex-direction: column;
   }
+
+  .cta {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 720px) {
@@ -711,6 +779,16 @@ a {
     font-size: clamp(2.5rem, 17vw, 4.4rem);
   }
 
+  .education-groups {
+    gap: 0.6rem;
+  }
+
+  .education-groups span {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
   .floating-card-main,
   .floating-card-side {
     position: relative;
@@ -735,6 +813,11 @@ a {
   .shape-orb {
     width: 8rem;
     height: 8rem;
+  }
+
+  .cta-copy,
+  .cta-actions {
+    padding: 1.2rem;
   }
 }
 
