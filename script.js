@@ -1,36 +1,43 @@
 const root = document.documentElement;
 const revealNodes = document.querySelectorAll(".reveal");
 const tiltCards = document.querySelectorAll(".tilt-card");
-const themeToggle = document.getElementById("theme-toggle");
+const menuToggle = document.getElementById("menu-toggle");
+const topNav = document.getElementById("topnav");
 
-// Dark/Light Mode Handler
-const initTheme = () => {
-  const savedTheme = localStorage.getItem("theme");
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const theme = savedTheme || (prefersDark ? "dark" : "light");
-  
-  if (theme === "light") {
-    root.setAttribute("data-theme", "light");
-  } else {
-    root.removeAttribute("data-theme");
-  }
-  localStorage.setItem("theme", theme);
-};
+if (menuToggle && topNav) {
+  const closeMobileMenu = () => {
+    topNav.classList.remove("is-open");
+    menuToggle.classList.remove("is-open");
+    menuToggle.setAttribute("aria-expanded", "false");
+  };
 
-const toggleTheme = () => {
-  const currentTheme = root.getAttribute("data-theme");
-  const newTheme = currentTheme === "light" ? "dark" : "light";
-  
-  if (newTheme === "light") {
-    root.setAttribute("data-theme", "light");
-  } else {
-    root.removeAttribute("data-theme");
-  }
-  localStorage.setItem("theme", newTheme);
-};
+  menuToggle.addEventListener("click", () => {
+    const willOpen = !topNav.classList.contains("is-open");
+    topNav.classList.toggle("is-open", willOpen);
+    menuToggle.classList.toggle("is-open", willOpen);
+    menuToggle.setAttribute("aria-expanded", String(willOpen));
+  });
 
-initTheme();
-if (themeToggle) themeToggle.addEventListener("click", toggleTheme);
+  topNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (window.innerWidth <= 720) {
+        closeMobileMenu();
+      }
+    });
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 720) {
+      closeMobileMenu();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMobileMenu();
+    }
+  });
+}
 
 const revealNode = (node) => {
   node.classList.add("is-visible");
