@@ -106,7 +106,7 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  font-family: "Syne", sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 1rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -198,16 +198,16 @@ a {
 .hero h1,
 .section-heading h2 {
   margin: 0;
-  font-family: "Syne", sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-weight: 800;
   font-kerning: normal;
 }
 
 .hero h1 {
-  line-height: 0.9;
-  letter-spacing: 0.005em;
-  font-size: clamp(2.8rem, 8.2vw, 6.2rem);
-  max-width: 8ch;
+  line-height: 0.92;
+  letter-spacing: 0;
+  font-size: clamp(2.35rem, 6.4vw, 5.35rem);
+  max-width: 7.2ch;
   text-wrap: balance;
 }
 
@@ -373,8 +373,9 @@ a {
 }
 
 .floating-card-side {
-  left: 8%;
-  top: 18%;
+  left: auto;
+  right: 2%;
+  top: 12%;
   max-width: 18rem;
 }
 
@@ -582,6 +583,7 @@ a {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
+  flex-wrap: wrap;
   border-radius: var(--radius-lg);
   padding: 1.4rem 1.5rem;
   margin: 3rem auto 2rem;
@@ -589,6 +591,14 @@ a {
 
 .footer p {
   margin: 0;
+}
+
+.footer-legal {
+  width: 100%;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.9rem;
+  color: var(--muted);
 }
 
 .reveal {
