@@ -1,6 +1,36 @@
 const root = document.documentElement;
 const revealNodes = document.querySelectorAll(".reveal");
 const tiltCards = document.querySelectorAll(".tilt-card");
+const themeToggle = document.getElementById("theme-toggle");
+
+// Dark/Light Mode Handler
+const initTheme = () => {
+  const savedTheme = localStorage.getItem("theme");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const theme = savedTheme || (prefersDark ? "dark" : "light");
+  
+  if (theme === "light") {
+    root.setAttribute("data-theme", "light");
+  } else {
+    root.removeAttribute("data-theme");
+  }
+  localStorage.setItem("theme", theme);
+};
+
+const toggleTheme = () => {
+  const currentTheme = root.getAttribute("data-theme");
+  const newTheme = currentTheme === "light" ? "dark" : "light";
+  
+  if (newTheme === "light") {
+    root.setAttribute("data-theme", "light");
+  } else {
+    root.removeAttribute("data-theme");
+  }
+  localStorage.setItem("theme", newTheme);
+};
+
+initTheme();
+if (themeToggle) themeToggle.addEventListener("click", toggleTheme);
 
 const revealNode = (node) => {
   node.classList.add("is-visible");
