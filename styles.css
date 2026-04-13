@@ -438,8 +438,18 @@ a {
 
 .profile-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, minmax(320px, 380px));
+  justify-content: center;
+  align-items: stretch;
   gap: 1.1rem;
+}
+
+.profile-grid > .profile-card:not(.profile-card-wide) {
+  text-align: center;
+}
+
+.profile-grid > .profile-card:not(.profile-card-wide) .prompt-title {
+  display: block;
 }
 
 .about-grid {
@@ -450,6 +460,8 @@ a {
 
 .profile-card-wide {
   grid-column: 1 / -1;
+  max-width: 776px;
+  justify-self: center;
 }
 
 .about-highlight {
@@ -514,9 +526,14 @@ a {
 
 .detail-list {
   margin: 0;
-  padding-left: 1.1rem;
+  padding-left: 0;
+  list-style: none;
   color: var(--muted);
   line-height: 1.8;
+}
+
+.detail-list li {
+  margin: 0.2rem 0;
 }
 
 .detail-list strong {
@@ -527,14 +544,15 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 0.9rem;
+  justify-content: center;
 }
 
 .profile-link-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 3rem;
-  height: 3rem;
+  width: 3.5rem;
+  height: 3.5rem;
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.035);
@@ -551,8 +569,8 @@ a {
 }
 
 .profile-link-icon .contact-icon {
-  width: 1.15rem;
-  height: 1.15rem;
+  width: 1.4rem;
+  height: 1.4rem;
 }
 
 .tag-row {
@@ -731,6 +749,16 @@ a {
   .hero {
     grid-template-columns: 1fr;
     padding-top: 3rem;
+  }
+
+  .profile-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    justify-content: stretch;
+  }
+
+  .profile-card-wide {
+    max-width: none;
+    justify-self: stretch;
   }
 
   .hero-stage {
