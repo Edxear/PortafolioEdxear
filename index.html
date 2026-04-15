@@ -22,6 +22,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -42,6 +43,7 @@
       <nav class="topnav" id="topnav">
         <a href="#profile">Perfil</a>
         <a href="#about">Sobre mi</a>
+        <a href="#projects">Proyectos</a>
         <a href="#education">Formacion</a>
       </nav>
     </header>
@@ -219,6 +221,70 @@
             </p>
           </article>
         </div>
+      </section>
+
+      <section class="projects reveal" id="projects">
+        <div class="section-heading">
+          <p class="eyebrow">Proyecto destacado</p>
+          <h2>TitanMaq: web corporativa multipagina para maquinaria pesada</h2>
+          <p>
+            TitanMaq es un sitio estatico orientado a presentar maquinaria, servicios, soporte y contacto comercial
+            con una identidad visual industrial, navegacion clara y experiencia responsive en todo el recorrido.
+          </p>
+        </div>
+
+        <article class="project-feature tilt-card" aria-label="Proyecto TitanMaq">
+          <figure class="project-media">
+            <img src="assets/projects/titanmaq-preview.svg" alt="Vista previa del sitio TitanMaq" loading="lazy" decoding="async">
+          </figure>
+
+          <div class="project-content">
+            <div class="project-header">
+              <p class="prompt-title">TitanMaq</p>
+              <div class="project-actions">
+                <a class="button button-primary" href="https://titan-maq-coderhouse.vercel.app/" target="_blank" rel="noreferrer">Ver deploy</a>
+              </div>
+            </div>
+
+            <p>
+              Objetivo principal: presentar catalogo y soluciones, facilitar contacto comercial y soporte, guiar al usuario
+              entre paginas clave con una navegacion consistente y reforzar la percepcion de marca.
+            </p>
+
+            <ul class="project-list" aria-label="Puntos clave de TitanMaq">
+              <li><strong>Tecnologias:</strong> HTML5, SCSS + CSS compilado, JavaScript vanilla, Bootstrap 5, Font Awesome, AOS y Node.js para build y QA.</li>
+              <li><strong>Arquitectura:</strong> sitio estatico multipagina con parciales reutilizables para header/footer inyectados por JavaScript.</li>
+              <li><strong>Vistas:</strong> index, servicios, productos, piezas, industrias, contacto, distribuidor, capacitacion y tecnologia.</li>
+              <li><strong>Funcionalidades:</strong> navegacion unificada, contenido por area de negocio, formularios y chatbot contextual comercial/tecnico.</li>
+              <li><strong>Mejoras UX:</strong> espaciados mas coherentes, CTAs integrados en tarjetas y tratamiento visual de imagenes para branding industrial.</li>
+              <li><strong>Mantenimiento:</strong> compilacion SCSS, watch en desarrollo, checklist QA sobre HTML y scripts de optimizacion de imagenes.</li>
+            </ul>
+
+            <div class="project-metrics" aria-label="Distribucion de lenguajes por tamano de archivos">
+              <article class="project-metric-card">
+                <h3>Fuente total</h3>
+                <p>Vista de distribucion total:</p>
+                <ul class="lang-dist-list">
+                  <li><i class="devicon-html5-plain colored" aria-hidden="true"></i> HTML: 51.98%</li>
+                  <li><i class="devicon-sass-plain colored" aria-hidden="true"></i> SCSS: 16.26%</li>
+                  <li><i class="devicon-css3-plain colored" aria-hidden="true"></i> CSS: 15.17%</li>
+                  <li><i class="devicon-javascript-plain colored" aria-hidden="true"></i> JavaScript (.js): 10.77%</li>
+                  <li><i class="devicon-markdown-original" aria-hidden="true"></i> Markdown: 3.08%</li>
+                  <li><i class="devicon-javascript-plain colored" aria-hidden="true"></i> JavaScript modulos (.mjs): 2.06%</li>
+                  <li><i class="devicon-json-plain colored" aria-hidden="true"></i> JSON: 0.61%</li>
+                  <li>Otros: 0.07%</li>
+                </ul>
+              </article>
+            </div>
+
+            <p class="project-pitch">
+              TitanMaq es una web corporativa multipagina desarrollada con HTML, SCSS y JavaScript,
+              enfocada en presentar productos y servicios de maquinaria pesada con experiencia responsive y consistente.
+              Incluye layout reutilizable con parciales, compilacion Sass, QA automatizada y un chatbot contextual
+              para asistencia comercial y tecnica.
+            </p>
+          </div>
+        </article>
       </section>
 
       <section class="education reveal" id="education">
