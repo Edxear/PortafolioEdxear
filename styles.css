@@ -499,7 +499,7 @@ a {
 .card-label,
 .prompt-title {
   display: inline-block;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   color: var(--accent);
   font-size: 0.78rem;
   text-transform: uppercase;
@@ -541,15 +541,25 @@ a {
 .projects,
 .education,
 .cta {
-  padding: 3.2rem 0 1.2rem;
+  padding: 2.8rem 0 1.05rem;
 }
 
 .section-heading {
-  margin-bottom: 2rem;
+  margin-bottom: 1.35rem;
+}
+
+.section-heading .eyebrow {
+  margin-bottom: 0.55rem;
 }
 
 .section-heading h2 {
-  margin-bottom: 1rem;
+  line-height: 1.07;
+  margin-bottom: 0.65rem;
+}
+
+.section-heading p {
+  margin: 0;
+  max-width: 74ch;
 }
 
 .profile-grid {
@@ -586,8 +596,10 @@ a {
 
 .project-feature {
   display: grid;
-  grid-template-columns: minmax(290px, 0.9fr) minmax(0, 1.1fr);
+  grid-template-columns: 1fr;
   gap: 0;
+  max-width: 980px;
+  margin: 0 auto;
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: var(--surface-solid);
@@ -604,7 +616,9 @@ a {
 .project-media {
   margin: 0;
   width: 100%;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 16%, var(--surface-border));
   background: linear-gradient(180deg, rgba(21, 114, 255, 0.07), rgba(252, 191, 73, 0.07));
 }
 
@@ -612,30 +626,38 @@ a {
   display: block;
   width: 100%;
   height: 100%;
-  min-height: 100%;
+  min-height: 0;
   object-fit: cover;
-  object-position: top center;
+  object-position: center top;
   border-radius: 0;
 }
 
 .project-content {
   display: grid;
-  gap: 1rem;
-  padding: 1.5rem;
+  gap: 0.9rem;
+  padding: 1.35rem 1.45rem 1.45rem;
 }
 
 .project-header {
   display: flex;
   gap: 0.8rem;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
+}
+
+.project-header .prompt-title {
+  margin-bottom: 0.2rem;
 }
 
 .project-actions {
   display: flex;
   gap: 0.6rem;
   flex-wrap: wrap;
+}
+
+.project-content > p {
+  margin: 0;
 }
 
 .project-list,
@@ -690,7 +712,7 @@ a {
 
 .project-metric-card {
   border-radius: 14px;
-  padding: 0.95rem;
+  padding: 1rem 1.05rem;
   border: 1px solid var(--surface-border);
   background: var(--surface-muted);
 }
@@ -1094,8 +1116,8 @@ body[data-theme="dark"] .project-pitch {
   }
 
   .project-media img {
-    min-height: auto;
-    height: 240px;
+    min-height: 0;
+    height: 100%;
   }
 
   .profile-grid {
@@ -1227,6 +1249,15 @@ body[data-theme="dark"] .project-pitch {
   .cta-copy,
   .cta-actions {
     padding: 1.2rem;
+  }
+
+  .project-media {
+    aspect-ratio: 4 / 3;
+  }
+
+  .project-content {
+    padding: 1.1rem;
+    gap: 0.8rem;
   }
 }
 
