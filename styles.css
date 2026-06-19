@@ -594,6 +594,11 @@ a {
   background: var(--surface);
 }
 
+.projects-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
 .project-feature {
   display: grid;
   grid-template-columns: 1fr;
@@ -854,6 +859,12 @@ a {
 .profile-link-icon .contact-icon {
   width: 1.4rem;
   height: 1.4rem;
+}
+
+.profile-link-download {
+  margin-top: 1rem;
+  min-height: 3rem;
+  padding-inline: 1.1rem;
 }
 
 .tag-row {

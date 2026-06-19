@@ -54,7 +54,7 @@
     <main>
       <section class="hero reveal" id="hero">
         <div class="hero-copy">
-          <p class="eyebrow">Desarrollador full stack en formacion</p>
+          <p class="eyebrow">Desarrollador Full Stack</p>
           <h1>EXEQUIEL<br>DEARMAS</h1>
           <p class="hero-text">
             Perfil orientado a equipos de desarrollo, primeras oportunidades IT y colaboraciones que necesiten una base
@@ -165,6 +165,9 @@
                 </svg>
               </a>
             </div>
+            <a class="button button-secondary profile-link-download" href="assets/documents/cv-exequiel-dearmas.docx" download="cv-exequiel-dearmas.docx">
+              Descargar CV
+            </a>
           </article>
 
           <article class="info-card profile-card profile-card-wide">
@@ -225,14 +228,15 @@
 
       <section class="projects reveal" id="projects">
         <div class="section-heading">
-          <p class="eyebrow">Proyecto destacado</p>
-          <h2>TitanMaq: web corporativa multipagina para maquinaria pesada</h2>
+          <p class="eyebrow">Proyectos destacados</p>
+          <h2>Casos recientes: TitanMaq e IntegraSalud</h2>
           <p>
-            TitanMaq es un sitio estatico orientado a presentar maquinaria, servicios, soporte y contacto comercial
-            con una identidad visual industrial, navegacion clara y experiencia responsive en todo el recorrido.
+            Dos implementaciones con objetivos distintos: presencia corporativa industrial y experiencia de reservas
+            en salud, ambas con foco en claridad de interfaz, arquitectura ordenada y buena respuesta en mobile.
           </p>
         </div>
 
+        <div class="projects-grid">
         <article class="project-feature tilt-card" aria-label="Proyecto TitanMaq">
           <figure class="project-media">
             <img src="assets/projects/titanmaq.png" alt="Vista previa del sitio TitanMaq" loading="lazy" decoding="async">
@@ -284,6 +288,61 @@
             </p>
           </div>
         </article>
+
+        <article class="project-feature tilt-card" aria-label="Proyecto IntegraSalud">
+          <figure class="project-media">
+            <img src="assets/projects/integrasalud-demo.png" alt="Vista previa del demo IntegraSalud" loading="lazy" decoding="async">
+          </figure>
+
+          <div class="project-content">
+            <div class="project-header">
+              <p class="prompt-title">IntegraSalud</p>
+              <div class="project-actions">
+                <a class="button button-primary" href="https://sistema-de-reservas-eta.vercel.app/demo" target="_blank" rel="noreferrer">Ver demo</a>
+                <a class="button button-secondary" href="https://github.com/Edxear/Sistema-de-Reservas..git" target="_blank" rel="noreferrer">Ver GitHub</a>
+              </div>
+            </div>
+
+            <p>
+              Sistema demo para gestion de turnos y seguimiento clinico con dos recorridos de usuario
+              (administrativo y paciente), orientado a validar flujos, roles y consistencia visual.
+            </p>
+
+            <ul class="project-list" aria-label="Puntos clave de IntegraSalud">
+              <li><strong>Enfoque funcional:</strong> acceso por perfil, circuito de reservas y base para modulos medicos operativos.</li>
+              <li><strong>UX/UI:</strong> layout claro, tema claro/oscuro, jerarquia de acciones y componentes de formulario legibles.</li>
+              <li><strong>Alcance demo:</strong> gestion, recetas, historial, laboratorio y teleconsulta representados para navegacion guiada.</li>
+              <li><strong>Escalabilidad:</strong> estructura pensada para crecer por modulos y sostener integraciones de servicios clinicos.</li>
+            </ul>
+
+            <div class="project-metrics" aria-label="Resumen tecnico de IntegraSalud">
+              <article class="project-metric-card">
+                <h3>Stack principal</h3>
+                <p>Base de interfaz y logica:</p>
+                <ul class="lang-dist-list">
+                  <li><i class="devicon-html5-plain colored" aria-hidden="true"></i> HTML</li>
+                  <li><i class="devicon-css3-plain colored" aria-hidden="true"></i> CSS</li>
+                  <li><i class="devicon-javascript-plain colored" aria-hidden="true"></i> JavaScript</li>
+                </ul>
+              </article>
+              <article class="project-metric-card">
+                <h3>Valor de producto</h3>
+                <p>Escenario simulado para:</p>
+                <ul class="lang-dist-list">
+                  <li>Validar flujos de reservas</li>
+                  <li>Probar interfaz por rol de usuario</li>
+                  <li>Demostrar una propuesta SaaS de salud</li>
+                </ul>
+              </article>
+            </div>
+
+            <p class="project-pitch">
+              IntegraSalud es un demo de sistema de reservas medicas con recorridos diferenciados por rol,
+              interfaz moderna y estructura modular orientada a evolucionar hacia una plataforma clinica mas amplia.
+            </p>
+          </div>
+        </article>
+        </div>
       </section>
 
       <section class="education reveal" id="education">
