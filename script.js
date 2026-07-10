@@ -3,6 +3,8 @@ const revealNodes = document.querySelectorAll(".reveal");
 const tiltCards = document.querySelectorAll(".tilt-card");
 const menuToggle = document.getElementById("menu-toggle");
 const topNav = document.getElementById("topnav");
+const styleToggle = document.getElementById("style-toggle");
+const styleToggleLabel = styleToggle?.querySelector(".theme-toggle-text");
 const themeToggle = document.getElementById("theme-toggle");
 const themeLabel = themeToggle?.querySelector(".theme-toggle-text");
 const particlesRoot = document.getElementById("particles-js");
@@ -13,10 +15,12 @@ const educationClusters = document.querySelectorAll(".education-cluster");
 const educationToggleAllButton = document.getElementById("education-toggle-all");
 
 const THEME_KEY = "portfolio-theme";
+const STYLE_KEY = "portfolio-style";
 const LANG_KEY = "portfolio-language";
 const SUPPORTED_LANGUAGES = ["es", "en", "pt"];
 
 let currentLanguage = "es";
+let currentStyle = "default";
 let areAllClustersOpen = false;
 
 const translations = {
@@ -71,6 +75,9 @@ const translations = {
     theme_toggle: "Cambiar tema",
     theme_mode_dark: "Modo oscuro",
     theme_mode_light: "Modo claro",
+    style_toggle: "Cambiar estilo visual",
+    style_mode_argentina: "Modo Argentina",
+    style_mode_classic: "Modo Clasico",
     lang_switch_label: "Cambiar idioma",
   },
   en: {
@@ -124,6 +131,9 @@ const translations = {
     theme_toggle: "Toggle theme",
     theme_mode_dark: "Dark mode",
     theme_mode_light: "Light mode",
+    style_toggle: "Switch visual style",
+    style_mode_argentina: "Argentina mode",
+    style_mode_classic: "Classic mode",
     lang_switch_label: "Change language",
   },
   pt: {
@@ -177,8 +187,272 @@ const translations = {
     theme_toggle: "Alternar tema",
     theme_mode_dark: "Modo escuro",
     theme_mode_light: "Modo claro",
+    style_toggle: "Alternar estilo visual",
+    style_mode_argentina: "Modo Argentina",
+    style_mode_classic: "Modo Classico",
     lang_switch_label: "Mudar idioma",
   },
+};
+
+const applyVisualStyle = (style, shouldPersist = true) => {
+  currentStyle = style === "argentina" ? "argentina" : "default";
+
+  if (currentStyle === "argentina") {
+    document.body.setAttribute("data-style", "argentina");
+  } else {
+    document.body.removeAttribute("data-style");
+  }
+
+  if (styleToggle) {
+    const isArgentina = currentStyle === "argentina";
+    styleToggle.setAttribute("aria-pressed", String(isArgentina));
+    styleToggle.setAttribute("aria-label", getText("style_toggle"));
+    if (styleToggleLabel) {
+      styleToggleLabel.textContent = isArgentina ? getText("style_mode_classic") : getText("style_mode_argentina");
+    }
+  }
+
+  if (shouldPersist) {
+    localStorage.setItem(STYLE_KEY, currentStyle);
+  }
+};
+
+const extendedTranslations = {
+  es: {
+    title: "Exequiel Dearmas | Portfolio",
+    text: {
+      "#hero .hero-text": "Perfil orientado a equipos de desarrollo, primeras oportunidades IT y colaboraciones que necesiten una base tecnica seria en frontend, React, backend y aprendizaje continuo aplicado a productos web reales.",
+      "#hero .hero-metrics div:nth-child(1) dt": "Base",
+      "#hero .hero-metrics div:nth-child(1) dd": "Coderhouse",
+      "#hero .hero-metrics div:nth-child(2) dt": "Ubicacion",
+      "#hero .hero-metrics div:nth-child(2) dd": "Gualeguaychu, AR",
+      "#hero .hero-metrics div:nth-child(3) dt": "Enfoque",
+      "#hero .hero-metrics div:nth-child(3) dd": "Web + Backend",
+      "#hero .hero-metrics div:nth-child(3) small": "Interfaces claras y logica solida",
+      ".floating-card-main .card-label": "Perfil",
+      ".floating-card-main h2": "Full stack para equipos y clientes",
+      ".floating-card-main p": "Exequiel Dearmas es mi identidad real y profesional para presentar una evolucion tecnica enfocada en productos web reales y bien resueltos.",
+      ".floating-card-side .card-label": "Contacto",
+      "#profile .section-heading .eyebrow": "Perfil",
+      "#profile .section-heading h2": "Una base tecnica en crecimiento, con foco claro en desarrollo",
+      "#profile .section-heading p": "Mi objetivo es construir y evolucionar mi perfil alrededor del desarrollo web, con foco en participar en proyectos reales y aportar con una mirada profesional amplia.",
+      "#profile .profile-card:nth-child(1) .prompt-title": "Datos clave",
+      "#profile .profile-card:nth-child(2) .prompt-title": "Enlaces",
+      "#profile .profile-link-download": "Descargar CV",
+      "#profile .profile-card-wide .prompt-title": "Stack en formacion",
+      "#about .section-heading .eyebrow": "Sobre mi",
+      "#about .section-heading h2": "Desarrollo full stack con enfoque tecnico y mirada profesional amplia",
+      "#about .section-heading p": "Estoy construyendo mi camino como desarrollador full stack, combinando una base practica en desarrollo web, JavaScript, React y backend con una mentalidad de aprendizaje continuo. Me interesa crear productos funcionales, claros y bien estructurados, cuidando tanto la experiencia de usuario como la logica que sostiene cada aplicacion.",
+      "#about .about-card:nth-child(1) .prompt-title": "Para equipos y recruiters",
+      "#about .about-card:nth-child(1) p": "Mi objetivo es seguir creciendo en proyectos donde pueda participar tanto en la construccion de interfaces modernas como en el diseño de servicios backend, integraciones y arquitectura de aplicaciones. Busco consolidar un perfil versatil, capaz de aportar en todo el flujo de desarrollo.",
+      "#about .about-card:nth-child(2) .prompt-title": "Para clientes y colaboraciones",
+      "#about .about-card:nth-child(2) p": "Me interesa desarrollar sitios y aplicaciones que no solo funcionen bien, sino que tambien comuniquen profesionalismo, orden y confianza. Puedo aportar una base tecnica en crecimiento con criterio para construir soluciones web claras y utiles.",
+      "#about .about-card:nth-child(3) .prompt-title": "Fortalezas actuales",
+      "#about .about-card:nth-child(3) p": "Mi formacion me dio una progresion clara desde maquetacion y logica con JavaScript hasta React, backend avanzado, arquitectura backend y una primera aproximacion a Python con IA y testing QA. Eso me permite entender el desarrollo como un sistema completo, no como piezas aisladas.",
+      "#projects .section-heading .eyebrow": "Proyectos destacados",
+      "#projects .section-heading h2": "Casos recientes: IntegraSalud y TitanMaq",
+      "#projects .section-heading p": "Dos implementaciones con objetivos distintos: experiencia de reservas en salud y presencia corporativa industrial, ambas con foco en claridad de interfaz, arquitectura ordenada y buena respuesta en mobile.",
+      "#projects .project-feature:nth-child(1) .project-actions a:nth-child(1)": "Ver demo",
+      "#projects .project-feature:nth-child(1) .project-actions a:nth-child(2)": "Ver GitHub",
+      "#projects .project-feature:nth-child(1) .project-content > p": "Sistema demo para gestion de turnos y seguimiento clinico con dos recorridos de usuario (administrativo y paciente), orientado a validar flujos, roles y consistencia visual.",
+      "#projects .project-feature:nth-child(1) .project-metric-card:nth-child(1) h3": "Stack principal",
+      "#projects .project-feature:nth-child(1) .project-metric-card:nth-child(1) p": "Base de interfaz y logica:",
+      "#projects .project-feature:nth-child(1) .project-metric-card:nth-child(2) h3": "Valor de producto",
+      "#projects .project-feature:nth-child(1) .project-metric-card:nth-child(2) p": "Escenario simulado para:",
+      "#projects .project-feature:nth-child(1) .project-pitch": "IntegraSalud es un demo de sistema de reservas medicas con recorridos diferenciados por rol, interfaz moderna y estructura modular orientada a evolucionar hacia una plataforma clinica mas amplia.",
+      "#projects .project-feature:nth-child(2) .project-actions a:nth-child(1)": "Ver deploy",
+      "#projects .project-feature:nth-child(2) .project-content > p": "Objetivo principal: presentar catalogo y soluciones, facilitar contacto comercial y soporte, guiar al usuario entre paginas clave con una navegacion consistente y reforzar la percepcion de marca.",
+      "#projects .project-feature:nth-child(2) .project-metric-card h3": "Fuente total",
+      "#projects .project-feature:nth-child(2) .project-metric-card p": "Vista de distribucion total:",
+      "#projects .project-feature:nth-child(2) .project-pitch": "TitanMaq es una web corporativa multipagina desarrollada con HTML, SCSS y JavaScript, enfocada en presentar productos y servicios de maquinaria pesada con experiencia responsive y consistente. Incluye layout reutilizable con parciales, compilacion Sass, QA automatizada y un chatbot contextual para asistencia comercial y tecnica.",
+      "#education .section-heading p": "La base academica visible combina cursos de Coderhouse y Santander Open Academy, con progresion desde desarrollo web hasta arquitectura backend, Python aplicado e introduccion a testing QA.",
+      "#contact .eyebrow": "Disponibilidad",
+      "#contact h2": "Disponible para practicas IT, equipos en crecimiento y colaboraciones web",
+      "#contact .cta-copy p:last-child": "Si buscas un perfil con base real en frontend, React, backend y capacidad de aprendizaje sostenido, puedo aportar compromiso, criterio tecnico y una comunicacion clara para seguir creciendo dentro de un equipo.",
+      ".footer p:nth-child(2)": "Portfolio personal con foco en desarrollo full stack, formacion validada y disponibilidad para nuevas oportunidades.",
+      ".footer-legal": "Derechos reservados. Edxear 2026"
+    },
+    html: {
+      "#profile .detail-list li:nth-child(1)": "<strong>Nombre:</strong> Exequiel Dearmas",
+      "#profile .detail-list li:nth-child(2)": "<strong>Alias:</strong> Edxear",
+      "#profile .detail-list li:nth-child(3)": "<strong>Ciudad:</strong> Gualeguaychu, Entre Rios, Argentina",
+      "#profile .detail-list li:nth-child(4)": "<strong>Codigo postal:</strong> 2820",
+      "#profile .detail-list li:nth-child(5)": "<strong>Institucion:</strong> Coderhouse",
+      "#projects .project-feature:nth-child(1) .project-list li:nth-child(1)": "<strong>Enfoque funcional:</strong> acceso por perfil, circuito de reservas y base para modulos medicos operativos.",
+      "#projects .project-feature:nth-child(1) .project-list li:nth-child(2)": "<strong>UX/UI:</strong> layout claro, tema claro/oscuro, jerarquia de acciones y componentes de formulario legibles.",
+      "#projects .project-feature:nth-child(1) .project-list li:nth-child(3)": "<strong>Alcance demo:</strong> gestion, recetas, historial, laboratorio y teleconsulta representados para navegacion guiada.",
+      "#projects .project-feature:nth-child(1) .project-list li:nth-child(4)": "<strong>Escalabilidad:</strong> estructura pensada para crecer por modulos y sostener integraciones de servicios clinicos.",
+      "#projects .project-feature:nth-child(2) .project-list li:nth-child(1)": "<strong>Tecnologias:</strong> HTML5, SCSS + CSS compilado, JavaScript, Bootstrap 5, Font Awesome, AOS y Node.js para build y QA.",
+      "#projects .project-feature:nth-child(2) .project-list li:nth-child(2)": "<strong>Arquitectura:</strong> sitio estatico multipagina con parciales reutilizables para header/footer inyectados por JavaScript.",
+      "#projects .project-feature:nth-child(2) .project-list li:nth-child(3)": "<strong>Funcionalidades:</strong> navegacion unificada, contenido por area de negocio, formularios y chatbot contextual comercial/tecnico.",
+      "#projects .project-feature:nth-child(2) .project-list li:nth-child(4)": "<strong>Mejoras UX:</strong> espaciados mas coherentes, CTAs integrados en tarjetas y tratamiento visual de imagenes para branding industrial.",
+      "#projects .project-feature:nth-child(2) .project-list li:nth-child(5)": "<strong>Mantenimiento:</strong> compilacion SCSS, watch en desarrollo, checklist QA sobre HTML y scripts de optimizacion de imagenes."
+    }
+  },
+  en: {
+    title: "Exequiel Dearmas | Portfolio",
+    text: {
+      "#hero .hero-text": "Profile focused on development teams, first IT opportunities and collaborations that need a serious technical foundation in frontend, React, backend and continuous learning applied to real web products.",
+      "#hero .hero-metrics div:nth-child(1) dt": "Base",
+      "#hero .hero-metrics div:nth-child(1) dd": "Coderhouse",
+      "#hero .hero-metrics div:nth-child(2) dt": "Location",
+      "#hero .hero-metrics div:nth-child(2) dd": "Gualeguaychu, AR",
+      "#hero .hero-metrics div:nth-child(3) dt": "Focus",
+      "#hero .hero-metrics div:nth-child(3) dd": "Web + Backend",
+      "#hero .hero-metrics div:nth-child(3) small": "Clear interfaces and solid logic",
+      ".floating-card-main .card-label": "Profile",
+      ".floating-card-main h2": "Full stack for teams and clients",
+      ".floating-card-main p": "Exequiel Dearmas is my real and professional identity to present a technical evolution focused on real, well-solved web products.",
+      ".floating-card-side .card-label": "Contact",
+      "#profile .section-heading .eyebrow": "Profile",
+      "#profile .section-heading h2": "A growing technical base with clear development focus",
+      "#profile .section-heading p": "My goal is to build and evolve my profile around web development, focused on participating in real projects and contributing with a broad professional perspective.",
+      "#profile .profile-card:nth-child(1) .prompt-title": "Key details",
+      "#profile .profile-card:nth-child(2) .prompt-title": "Links",
+      "#profile .profile-link-download": "Download CV",
+      "#profile .profile-card-wide .prompt-title": "Training stack",
+      "#about .section-heading .eyebrow": "About me",
+      "#about .section-heading h2": "Full stack development with technical focus and broad professional vision",
+      "#about .section-heading p": "I am building my path as a full stack developer, combining practical web development foundations, JavaScript, React and backend with a continuous-learning mindset. I am interested in creating functional, clear and well-structured products, taking care of both user experience and underlying logic.",
+      "#about .about-card:nth-child(1) .prompt-title": "For teams and recruiters",
+      "#about .about-card:nth-child(1) p": "My goal is to keep growing in projects where I can contribute to both modern interfaces and backend services, integrations and app architecture. I seek to consolidate a versatile profile capable of contributing across the full development flow.",
+      "#about .about-card:nth-child(2) .prompt-title": "For clients and collaborations",
+      "#about .about-card:nth-child(2) p": "I am interested in building sites and apps that not only work well, but also communicate professionalism, structure and trust. I can contribute a growing technical base with criteria to build clear and useful web solutions.",
+      "#about .about-card:nth-child(3) .prompt-title": "Current strengths",
+      "#about .about-card:nth-child(3) p": "My training gave me a clear progression from markup and JavaScript logic to React, advanced backend, backend architecture and a first approach to Python with AI and QA testing. This helps me understand development as a complete system, not isolated pieces.",
+      "#projects .section-heading .eyebrow": "Featured projects",
+      "#projects .section-heading h2": "Recent cases: IntegraSalud and TitanMaq",
+      "#projects .section-heading p": "Two implementations with different goals: healthcare booking experience and industrial corporate presence, both focused on interface clarity, clean architecture and strong mobile response.",
+      "#projects .project-feature:nth-child(1) .project-actions a:nth-child(1)": "View demo",
+      "#projects .project-feature:nth-child(1) .project-actions a:nth-child(2)": "View GitHub",
+      "#projects .project-feature:nth-child(1) .project-content > p": "Demo system for appointment management and clinical tracking with two user flows (admin and patient), aimed at validating flows, roles and visual consistency.",
+      "#projects .project-feature:nth-child(1) .project-metric-card:nth-child(1) h3": "Main stack",
+      "#projects .project-feature:nth-child(1) .project-metric-card:nth-child(1) p": "Interface and logic base:",
+      "#projects .project-feature:nth-child(1) .project-metric-card:nth-child(2) h3": "Product value",
+      "#projects .project-feature:nth-child(1) .project-metric-card:nth-child(2) p": "Simulated scenario to:",
+      "#projects .project-feature:nth-child(1) .project-pitch": "IntegraSalud is a medical booking system demo with role-based flows, modern interface and modular structure designed to evolve into a broader clinical platform.",
+      "#projects .project-feature:nth-child(2) .project-actions a:nth-child(1)": "View deploy",
+      "#projects .project-feature:nth-child(2) .project-content > p": "Main objective: present catalog and solutions, facilitate commercial contact and support, guide users through key pages with consistent navigation and strengthen brand perception.",
+      "#projects .project-feature:nth-child(2) .project-metric-card h3": "Total source",
+      "#projects .project-feature:nth-child(2) .project-metric-card p": "Total distribution view:",
+      "#projects .project-feature:nth-child(2) .project-pitch": "TitanMaq is a multipage corporate website built with HTML, SCSS and JavaScript, focused on presenting heavy machinery products and services with a consistent responsive experience. It includes reusable layout with partials, Sass compilation, automated QA and a contextual chatbot for commercial and technical support.",
+      "#education .section-heading p": "The visible academic base combines Coderhouse and Santander Open Academy courses, progressing from web development to backend architecture, applied Python and an introduction to QA testing.",
+      "#contact .eyebrow": "Availability",
+      "#contact h2": "Available for IT internships, growing teams and web collaborations",
+      "#contact .cta-copy p:last-child": "If you are looking for a profile with a real frontend, React and backend base plus sustained learning capacity, I can contribute commitment, technical judgment and clear communication to keep growing within a team.",
+      ".footer p:nth-child(2)": "Personal portfolio focused on full stack development, validated training and availability for new opportunities.",
+      ".footer-legal": "All rights reserved. Edxear 2026"
+    },
+    html: {
+      "#profile .detail-list li:nth-child(1)": "<strong>Name:</strong> Exequiel Dearmas",
+      "#profile .detail-list li:nth-child(2)": "<strong>Alias:</strong> Edxear",
+      "#profile .detail-list li:nth-child(3)": "<strong>City:</strong> Gualeguaychu, Entre Rios, Argentina",
+      "#profile .detail-list li:nth-child(4)": "<strong>Postal code:</strong> 2820",
+      "#profile .detail-list li:nth-child(5)": "<strong>Institution:</strong> Coderhouse",
+      "#projects .project-feature:nth-child(1) .project-list li:nth-child(1)": "<strong>Functional focus:</strong> role-based access, booking flow and a base for operational medical modules.",
+      "#projects .project-feature:nth-child(1) .project-list li:nth-child(2)": "<strong>UX/UI:</strong> clear layout, light/dark mode, action hierarchy and readable form components.",
+      "#projects .project-feature:nth-child(1) .project-list li:nth-child(3)": "<strong>Demo scope:</strong> management, prescriptions, history, lab and telemedicine represented for guided navigation.",
+      "#projects .project-feature:nth-child(1) .project-list li:nth-child(4)": "<strong>Scalability:</strong> structure designed to grow by modules and support clinical service integrations.",
+      "#projects .project-feature:nth-child(2) .project-list li:nth-child(1)": "<strong>Technologies:</strong> HTML5, SCSS + compiled CSS, JavaScript, Bootstrap 5, Font Awesome, AOS and Node.js for build and QA.",
+      "#projects .project-feature:nth-child(2) .project-list li:nth-child(2)": "<strong>Architecture:</strong> multipage static site with reusable partials for header/footer injected via JavaScript.",
+      "#projects .project-feature:nth-child(2) .project-list li:nth-child(3)": "<strong>Features:</strong> unified navigation, business-area content, forms and contextual commercial/technical chatbot.",
+      "#projects .project-feature:nth-child(2) .project-list li:nth-child(4)": "<strong>UX improvements:</strong> more coherent spacing, integrated CTAs in cards and visual treatment of images for industrial branding.",
+      "#projects .project-feature:nth-child(2) .project-list li:nth-child(5)": "<strong>Maintenance:</strong> SCSS compilation, dev watch, QA checklist for HTML and image optimization scripts."
+    }
+  },
+  pt: {
+    title: "Exequiel Dearmas | Portfolio",
+    text: {
+      "#hero .hero-text": "Perfil orientado para equipes de desenvolvimento, primeiras oportunidades em TI e colaboracoes que precisem de base tecnica solida em frontend, React, backend e aprendizado continuo aplicado a produtos web reais.",
+      "#hero .hero-metrics div:nth-child(1) dt": "Base",
+      "#hero .hero-metrics div:nth-child(1) dd": "Coderhouse",
+      "#hero .hero-metrics div:nth-child(2) dt": "Localizacao",
+      "#hero .hero-metrics div:nth-child(2) dd": "Gualeguaychu, AR",
+      "#hero .hero-metrics div:nth-child(3) dt": "Foco",
+      "#hero .hero-metrics div:nth-child(3) dd": "Web + Backend",
+      "#hero .hero-metrics div:nth-child(3) small": "Interfaces claras e logica solida",
+      ".floating-card-main .card-label": "Perfil",
+      ".floating-card-main h2": "Full stack para equipes e clientes",
+      ".floating-card-main p": "Exequiel Dearmas e minha identidade real e profissional para apresentar uma evolucao tecnica focada em produtos web reais e bem resolvidos.",
+      ".floating-card-side .card-label": "Contato",
+      "#profile .section-heading .eyebrow": "Perfil",
+      "#profile .section-heading h2": "Base tecnica em crescimento com foco claro em desenvolvimento",
+      "#profile .section-heading p": "Meu objetivo e construir e evoluir meu perfil em torno do desenvolvimento web, com foco em participar de projetos reais e contribuir com uma visao profissional ampla.",
+      "#profile .profile-card:nth-child(1) .prompt-title": "Dados principais",
+      "#profile .profile-card:nth-child(2) .prompt-title": "Links",
+      "#profile .profile-link-download": "Baixar CV",
+      "#profile .profile-card-wide .prompt-title": "Stack em formacao",
+      "#about .section-heading .eyebrow": "Sobre mim",
+      "#about .section-heading h2": "Desenvolvimento full stack com foco tecnico e visao profissional ampla",
+      "#about .section-heading p": "Estou construindo meu caminho como desenvolvedor full stack, combinando base pratica em desenvolvimento web, JavaScript, React e backend com mentalidade de aprendizado continuo. Tenho interesse em criar produtos funcionais, claros e bem estruturados, cuidando tanto da experiencia do usuario quanto da logica que sustenta cada aplicacao.",
+      "#about .about-card:nth-child(1) .prompt-title": "Para equipes e recrutadores",
+      "#about .about-card:nth-child(1) p": "Meu objetivo e continuar crescendo em projetos onde eu possa participar tanto da construcao de interfaces modernas quanto de servicos backend, integracoes e arquitetura de aplicacoes. Busco consolidar um perfil versatil, capaz de contribuir em todo o fluxo de desenvolvimento.",
+      "#about .about-card:nth-child(2) .prompt-title": "Para clientes e colaboracoes",
+      "#about .about-card:nth-child(2) p": "Tenho interesse em desenvolver sites e aplicacoes que nao apenas funcionem bem, mas tambem comuniquem profissionalismo, organizacao e confianca. Posso contribuir com base tecnica em crescimento e criterio para construir solucoes web claras e uteis.",
+      "#about .about-card:nth-child(3) .prompt-title": "Fortalezas atuais",
+      "#about .about-card:nth-child(3) p": "Minha formacao trouxe uma progressao clara desde maquetacao e logica com JavaScript ate React, backend avancado, arquitetura backend e uma primeira aproximacao a Python com IA e testing QA. Isso me permite entender o desenvolvimento como um sistema completo, nao como partes isoladas.",
+      "#projects .section-heading .eyebrow": "Projetos em destaque",
+      "#projects .section-heading h2": "Casos recentes: IntegraSalud e TitanMaq",
+      "#projects .section-heading p": "Duas implementacoes com objetivos diferentes: experiencia de reservas em saude e presenca corporativa industrial, ambas com foco em clareza de interface, arquitetura organizada e boa resposta em mobile.",
+      "#projects .project-feature:nth-child(1) .project-actions a:nth-child(1)": "Ver demo",
+      "#projects .project-feature:nth-child(1) .project-actions a:nth-child(2)": "Ver GitHub",
+      "#projects .project-feature:nth-child(1) .project-content > p": "Sistema demo para gestao de turnos e acompanhamento clinico com dois fluxos de usuario (administrativo e paciente), orientado a validar fluxos, papeis e consistencia visual.",
+      "#projects .project-feature:nth-child(1) .project-metric-card:nth-child(1) h3": "Stack principal",
+      "#projects .project-feature:nth-child(1) .project-metric-card:nth-child(1) p": "Base de interface e logica:",
+      "#projects .project-feature:nth-child(1) .project-metric-card:nth-child(2) h3": "Valor de produto",
+      "#projects .project-feature:nth-child(1) .project-metric-card:nth-child(2) p": "Cenario simulado para:",
+      "#projects .project-feature:nth-child(1) .project-pitch": "IntegraSalud e um demo de sistema de reservas medicas com fluxos por perfil, interface moderna e estrutura modular orientada a evoluir para uma plataforma clinica mais ampla.",
+      "#projects .project-feature:nth-child(2) .project-actions a:nth-child(1)": "Ver deploy",
+      "#projects .project-feature:nth-child(2) .project-content > p": "Objetivo principal: apresentar catalogo e solucoes, facilitar contato comercial e suporte, guiar o usuario entre paginas-chave com navegacao consistente e reforcar a percepcao de marca.",
+      "#projects .project-feature:nth-child(2) .project-metric-card h3": "Fonte total",
+      "#projects .project-feature:nth-child(2) .project-metric-card p": "Visao de distribuicao total:",
+      "#projects .project-feature:nth-child(2) .project-pitch": "TitanMaq e um site corporativo multipagina desenvolvido com HTML, SCSS e JavaScript, focado em apresentar produtos e servicos de maquinario pesado com experiencia responsiva e consistente. Inclui layout reutilizavel com parciais, compilacao Sass, QA automatizada e chatbot contextual para assistencia comercial e tecnica.",
+      "#education .section-heading p": "A base academica visivel combina cursos da Coderhouse e Santander Open Academy, com progressao desde desenvolvimento web ate arquitetura backend, Python aplicado e introducao a testing QA.",
+      "#contact .eyebrow": "Disponibilidade",
+      "#contact h2": "Disponivel para estagios TI, equipes em crescimento e colaboracoes web",
+      "#contact .cta-copy p:last-child": "Se voce busca um perfil com base real em frontend, React, backend e capacidade de aprendizado continuo, posso contribuir com comprometimento, criterio tecnico e comunicacao clara para continuar crescendo dentro de uma equipe.",
+      ".footer p:nth-child(2)": "Portfolio pessoal com foco em desenvolvimento full stack, formacao validada e disponibilidade para novas oportunidades.",
+      ".footer-legal": "Direitos reservados. Edxear 2026"
+    },
+    html: {
+      "#profile .detail-list li:nth-child(1)": "<strong>Nome:</strong> Exequiel Dearmas",
+      "#profile .detail-list li:nth-child(2)": "<strong>Apelido:</strong> Edxear",
+      "#profile .detail-list li:nth-child(3)": "<strong>Cidade:</strong> Gualeguaychu, Entre Rios, Argentina",
+      "#profile .detail-list li:nth-child(4)": "<strong>CEP:</strong> 2820",
+      "#profile .detail-list li:nth-child(5)": "<strong>Instituicao:</strong> Coderhouse",
+      "#projects .project-feature:nth-child(1) .project-list li:nth-child(1)": "<strong>Foco funcional:</strong> acesso por perfil, fluxo de reservas e base para modulos medicos operacionais.",
+      "#projects .project-feature:nth-child(1) .project-list li:nth-child(2)": "<strong>UX/UI:</strong> layout claro, modo claro/escuro, hierarquia de acoes e componentes de formulario legiveis.",
+      "#projects .project-feature:nth-child(1) .project-list li:nth-child(3)": "<strong>Escopo demo:</strong> gestao, receitas, historico, laboratorio e teleconsulta representados para navegacao guiada.",
+      "#projects .project-feature:nth-child(1) .project-list li:nth-child(4)": "<strong>Escalabilidade:</strong> estrutura pensada para crescer por modulos e sustentar integracoes de servicos clinicos.",
+      "#projects .project-feature:nth-child(2) .project-list li:nth-child(1)": "<strong>Tecnologias:</strong> HTML5, SCSS + CSS compilado, JavaScript, Bootstrap 5, Font Awesome, AOS e Node.js para build e QA.",
+      "#projects .project-feature:nth-child(2) .project-list li:nth-child(2)": "<strong>Arquitetura:</strong> site estatico multipagina com parciais reutilizaveis para header/footer injetados via JavaScript.",
+      "#projects .project-feature:nth-child(2) .project-list li:nth-child(3)": "<strong>Funcionalidades:</strong> navegacao unificada, conteudo por area de negocio, formularios e chatbot contextual comercial/tecnico.",
+      "#projects .project-feature:nth-child(2) .project-list li:nth-child(4)": "<strong>Melhorias UX:</strong> espacamentos mais coerentes, CTAs integradas em cards e tratamento visual de imagens para branding industrial.",
+      "#projects .project-feature:nth-child(2) .project-list li:nth-child(5)": "<strong>Manutencao:</strong> compilacao SCSS, watch em desenvolvimento, checklist QA em HTML e scripts de otimizacao de imagens."
+    }
+  }
+};
+
+const applyExtendedTranslations = () => {
+  const dictionary = extendedTranslations[currentLanguage] || extendedTranslations.es;
+
+  if (dictionary.title) {
+    document.title = dictionary.title;
+  }
+
+  Object.entries(dictionary.text || {}).forEach(([selector, value]) => {
+    const node = document.querySelector(selector);
+    if (node) {
+      node.textContent = value;
+    }
+  });
+
+  Object.entries(dictionary.html || {}).forEach(([selector, value]) => {
+    const node = document.querySelector(selector);
+    if (node) {
+      node.innerHTML = value;
+    }
+  });
 };
 
 const resolveLanguage = (lang) => {
@@ -226,6 +500,12 @@ const updateThemeToggleLabel = () => {
   if (languageSwitch) {
     languageSwitch.setAttribute("aria-label", getText("lang_switch_label"));
   }
+  if (styleToggle) {
+    styleToggle.setAttribute("aria-label", getText("style_toggle"));
+    if (styleToggleLabel) {
+      styleToggleLabel.textContent = currentStyle === "argentina" ? getText("style_mode_classic") : getText("style_mode_argentina");
+    }
+  }
 };
 
 const updateEducationToggleAllLabel = () => {
@@ -246,6 +526,8 @@ const applyLanguage = (language, shouldPersist = true) => {
       node.textContent = value;
     }
   });
+
+  applyExtendedTranslations();
 
   updateLanguageButtons();
   updateThemeToggleLabel();
@@ -355,6 +637,9 @@ const applyTheme = (theme) => {
 const storedTheme = localStorage.getItem(THEME_KEY);
 applyTheme(storedTheme || getSystemTheme());
 
+const storedStyle = localStorage.getItem(STYLE_KEY);
+applyVisualStyle(storedStyle || "default", true);
+
 const storedLanguage = localStorage.getItem(LANG_KEY);
 applyLanguage(storedLanguage || detectLanguage(), true);
 
@@ -379,6 +664,13 @@ if (themeToggle) {
   } else if (typeof mediaQuery.addListener === "function") {
     mediaQuery.addListener(onSystemThemeChange);
   }
+}
+
+if (styleToggle) {
+  styleToggle.addEventListener("click", () => {
+    const nextStyle = currentStyle === "argentina" ? "default" : "argentina";
+    applyVisualStyle(nextStyle, true);
+  });
 }
 
 if (menuToggle && topNav) {
