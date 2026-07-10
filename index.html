@@ -40,11 +40,16 @@
         <span class="menu-toggle-bar"></span>
       </button>
       <nav class="topnav" id="topnav">
-        <a href="#profile">Perfil</a>
-        <a href="#about">Sobre mi</a>
-        <a href="#projects">Proyectos</a>
-        <a href="#education">Formacion</a>
+        <a href="#profile" data-i18n="nav_profile">Perfil</a>
+        <a href="#about" data-i18n="nav_about">Sobre mi</a>
+        <a href="#projects" data-i18n="nav_projects">Proyectos</a>
+        <a href="#education" data-i18n="nav_education">Formacion</a>
       </nav>
+      <div class="lang-switch" id="lang-switch" role="group" aria-label="Cambiar idioma">
+        <button class="lang-btn" type="button" data-lang-btn="es" aria-label="Cambiar a espanol">ES</button>
+        <button class="lang-btn" type="button" data-lang-btn="en" aria-label="Switch to English">EN</button>
+        <button class="lang-btn" type="button" data-lang-btn="pt" aria-label="Mudar para portugues">PT</button>
+      </div>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar tema" aria-pressed="false">
         <span class="theme-toggle-icon" aria-hidden="true">◐</span>
         <span class="theme-toggle-text">Modo oscuro</span>
@@ -54,15 +59,15 @@
     <main>
       <section class="hero reveal" id="hero">
         <div class="hero-copy">
-          <p class="eyebrow">Desarrollador Full Stack</p>
+          <p class="eyebrow" data-i18n="hero_eyebrow">Desarrollador Full Stack</p>
           <h1>EXEQUIEL<br>DEARMAS</h1>
           <p class="hero-text">
             Perfil orientado a equipos de desarrollo, primeras oportunidades IT y colaboraciones que necesiten una base
             tecnica seria en frontend, React, backend y aprendizaje continuo aplicado a productos web reales.
           </p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#about">Sobre mi</a>
-            <a class="button button-secondary" href="#education">Ver formacion</a>
+            <a class="button button-primary" href="#about" data-i18n="hero_cta_about">Sobre mi</a>
+            <a class="button button-secondary" href="#education" data-i18n="hero_cta_education">Ver formacion</a>
           </div>
           <dl class="hero-metrics">
             <div>
@@ -346,8 +351,8 @@
 
       <section class="education reveal" id="education">
         <div class="section-heading">
-          <p class="eyebrow">Formacion y certificados</p>
-          <h2>Ruta de aprendizaje construida en web, frontend y backend</h2>
+          <p class="eyebrow" data-i18n="education_eyebrow">Formacion y certificados</p>
+          <h2 data-i18n="education_title">Ruta de aprendizaje construida en web, frontend y backend</h2>
           <p>
             La base academica visible combina cursos de Coderhouse y Santander Open Academy, con progresion desde desarrollo web
             hasta arquitectura backend, Python aplicado e introduccion a testing QA.
@@ -355,102 +360,114 @@
         </div>
 
         <div class="education-groups" aria-label="Resumen de formacion por area">
-          <span>Frontend</span>
-          <span>Backend</span>
-          <span>Python + IA</span>
-          <span>QA</span>
-          <span>8 certificaciones finalizadas</span>
+          <span data-i18n="education_chip_fullstack">Full Stack</span>
+          <span data-i18n="education_chip_backend">Backend</span>
+          <span data-i18n="education_chip_python">Python</span>
+          <span data-i18n="education_chip_qa">QA</span>
+          <span data-i18n="education_chip_total">11 certificaciones finalizadas</span>
         </div>
 
-        <div class="education-grid">
-          <article class="prompt-card certificate-card">
-            <picture>
-              <source srcset="assets/certificates/uploads/desarrollo-web.png" type="image/png">
-              <img class="certificate-image" src="assets/certificates/uploads/desarrollo-web.jpg" alt="Certificado de Desarrollo Web de Coderhouse" loading="lazy" decoding="async">
-            </picture>
-            <p class="prompt-title">Coderhouse</p>
-            <h3>Desarrollo Web</h3>
-            <p class="certificate-meta">Formacion Full Stack</p>
-            <p>38 horas · 10 semanas</p>
-            <p>Finalizado el 14 de mayo de 2025.</p>
-          </article>
-          <article class="prompt-card certificate-card">
-            <picture>
-              <source srcset="assets/certificates/uploads/javascript.png" type="image/png">
-              <img class="certificate-image" src="assets/certificates/uploads/javascript.jpg" alt="Certificado de JavaScript de Coderhouse" loading="lazy" decoding="async">
-            </picture>
-            <p class="prompt-title">Coderhouse</p>
-            <h3>JavaScript</h3>
-            <p class="certificate-meta">Formacion Full Stack</p>
-            <p>20 horas · 10 semanas</p>
-            <p>Finalizado el 5 de agosto de 2025.</p>
-          </article>
-          <article class="prompt-card certificate-card">
-            <picture>
-              <source srcset="assets/certificates/uploads/react-js.png" type="image/png">
-              <img class="certificate-image" src="assets/certificates/uploads/react-js.jpg" alt="Certificado de React JS de Coderhouse" loading="lazy" decoding="async">
-            </picture>
-            <p class="prompt-title">Coderhouse</p>
-            <h3>React JS</h3>
-            <p class="certificate-meta">Formacion Full Stack</p>
-            <p>16 horas · 8 semanas</p>
-            <p>Finalizado el 8 de octubre de 2025.</p>
-          </article>
-          <article class="prompt-card certificate-card">
-            <picture>
-              <source srcset="assets/certificates/uploads/python-ia.jpg" type="image/jpeg">
-              <img class="certificate-image" src="assets/certificates/uploads/python-ia.jpg" alt="Certificado de Python con IA de Santander Open Academy" loading="lazy" decoding="async">
-            </picture>
-            <p class="prompt-title">Santander Open Academy</p>
-            <h3>Python: desarrollo inteligente con IA</h3>
-            <p class="certificate-meta">Formacion Complementaria</p>
-            <p>8 horas · 2 modulos · Autoevaluacion</p>
-            <p>Finalizado el 17 de noviembre de 2025.</p>
-          </article>
-          <article class="prompt-card certificate-card">
-            <picture>
-              <source srcset="assets/certificates/uploads/backend-1.png" type="image/png">
-              <img class="certificate-image" src="assets/certificates/uploads/backend-1.jpg" alt="Certificado de Programacion Backend I de Coderhouse" loading="lazy" decoding="async">
-            </picture>
-            <p class="prompt-title">Coderhouse</p>
-            <h3>Programacion Backend I</h3>
-            <p class="certificate-meta">Formacion Backend</p>
-            <p>18 horas · 9 semanas</p>
-            <p>Desarrollo avanzado de backend. Finalizado el 5 de enero de 2026.</p>
-          </article>
-          <article class="prompt-card certificate-card">
-            <picture>
-              <source srcset="assets/certificates/uploads/backend-2.png" type="image/png">
-              <img class="certificate-image" src="assets/certificates/uploads/backend-2.jpg" alt="Certificado de Backend II de Coderhouse" loading="lazy" decoding="async">
-            </picture>
-            <p class="prompt-title">Coderhouse</p>
-            <h3>Backend II</h3>
-            <p class="certificate-meta">Formacion Backend</p>
-            <p>16 horas · 8 semanas</p>
-            <p>Diseño y arquitectura backend. Finalizado el 10 de marzo de 2026.</p>
-          </article>
-          <article class="prompt-card certificate-card">
-            <picture>
-              <source srcset="assets/certificates/uploads/backend-3-testing-flex.jpg" type="image/jpeg">
-              <img class="certificate-image" src="assets/certificates/uploads/backend-3-testing-flex.jpg" alt="Certificado de Programacion Backend III Testing y Escalabilidad Flex de Coderhouse" loading="lazy" decoding="async">
-            </picture>
-            <p class="prompt-title">Coderhouse</p>
-            <h3>Programacion Backend (III): Testing y Escalabilidad Flex</h3>
-            <p class="certificate-meta">Formacion Backend</p>
-            <p>8 horas · 8 semanas</p>
-            <p>Finalizado el 2 de junio de 2026.</p>
-          </article>
-          <article class="prompt-card certificate-card">
-            <picture>
-              <source srcset="assets/certificates/uploads/testing-qa.jpg" type="image/jpeg">
-              <img class="certificate-image" src="assets/certificates/uploads/testing-qa.jpg" alt="Certificado de Proyeccion Profesional en Testing QA de Coderhouse" loading="lazy" decoding="async">
-            </picture>
-            <p class="prompt-title">Coderhouse</p>
-            <h3>Proyeccion Profesional en Testing QA</h3>
-            <p class="certificate-meta">Formacion QA</p>
-            <p>Workshop certificado</p>
-            <p>Completado el 8 de abril de 2026.</p>
-          </article>
+        <div class="education-controls">
+          <button class="button button-secondary education-toggle-all" id="education-toggle-all" type="button" data-i18n="education_toggle_all_show">
+            Ver todo
+          </button>
+        </div>
+
+        <div class="education-clusters" aria-label="Certificados agrupados por rama">
+          <details class="prompt-card education-cluster" open>
+            <summary>
+              <span class="prompt-title">Coderhouse</span>
+              <h3 data-i18n="cluster_fullstack_title">Ruta Full Stack</h3>
+              <span class="cluster-count" data-i18n="cluster_fullstack_count">3 certificados</span>
+            </summary>
+            <div class="certificate-mini-grid">
+              <article class="certificate-mini-item">
+                <img class="certificate-image" src="assets/certificates/uploads/react-js.png" alt="Certificado de React JS de Coderhouse" loading="lazy" decoding="async">
+                <h4>React JS</h4>
+                <p data-i18n="cert_react_meta">16 horas · 8 semanas · Finalizado 08/10/2025</p>
+              </article>
+              <article class="certificate-mini-item">
+                <img class="certificate-image" src="assets/certificates/uploads/javascript.png" alt="Certificado de JavaScript de Coderhouse" loading="lazy" decoding="async">
+                <h4>JavaScript</h4>
+                <p data-i18n="cert_js_meta">20 horas · 10 semanas · Finalizado 05/08/2025</p>
+              </article>
+              <article class="certificate-mini-item">
+                <img class="certificate-image" src="assets/certificates/uploads/desarrollo-web.png" alt="Certificado de Desarrollo Web de Coderhouse" loading="lazy" decoding="async">
+                <h4>Desarrollo Web</h4>
+                <p data-i18n="cert_web_meta">38 horas · 10 semanas · Finalizado 14/05/2025</p>
+              </article>
+            </div>
+          </details>
+
+          <details class="prompt-card education-cluster">
+            <summary>
+              <span class="prompt-title">Python</span>
+              <h3 data-i18n="cluster_python_title">Especializacion y desafios</h3>
+              <span class="cluster-count" data-i18n="cluster_python_count">4 certificados</span>
+            </summary>
+            <div class="certificate-mini-grid">
+              <article class="certificate-mini-item">
+                <img class="certificate-image" src="assets/certificates/uploads/python-ia.jpg" alt="Certificado de Python con IA de Santander Open Academy" loading="lazy" decoding="async">
+                <h4 data-i18n="cert_py_ai_title">Python: desarrollo inteligente con IA</h4>
+                <p data-i18n="cert_py_ai_meta">8 horas · 2 modulos · Finalizado 17/11/2025</p>
+              </article>
+              <article class="certificate-mini-item">
+                <img class="certificate-image" src="assets/certificates/uploads/CertificadoDeFinalizacion_Aprende%20analisis%20de%20datos%20conv%201.jpeg" alt="Certificado Aprende analisis de datos" loading="lazy" decoding="async">
+                <h4 data-i18n="cert_py_data_title">Aprende analisis de datos</h4>
+                <p data-i18n="cert_py_data_meta">Certificacion complementaria · Python</p>
+              </article>
+              <article class="certificate-mini-item">
+                <img class="certificate-image" src="assets/certificates/uploads/CertificadoDeFinalizacion_Desafio%20de%20programacion%20Python%20conv%201.jpeg" alt="Certificado Desafio de programacion Python" loading="lazy" decoding="async">
+                <h4 data-i18n="cert_py_challenge_title">Desafio de programacion Python</h4>
+                <p data-i18n="cert_py_challenge_meta">Certificacion complementaria · Python</p>
+              </article>
+              <article class="certificate-mini-item">
+                <img class="certificate-image" src="assets/certificates/uploads/CertificadoDeFinalizacion_Domina%20Python%20Nivel%202%20conv%201.jpeg" alt="Certificado Domina Python Nivel 2" loading="lazy" decoding="async">
+                <h4 data-i18n="cert_py_level2_title">Domina Python Nivel 2</h4>
+                <p data-i18n="cert_py_level2_meta">Certificacion complementaria · Python avanzado</p>
+              </article>
+            </div>
+          </details>
+
+          <details class="prompt-card education-cluster">
+            <summary>
+              <span class="prompt-title">Coderhouse</span>
+              <h3 data-i18n="cluster_backend_title">Ruta Backend</h3>
+              <span class="cluster-count" data-i18n="cluster_backend_count">3 certificados</span>
+            </summary>
+            <div class="certificate-mini-grid">
+              <article class="certificate-mini-item">
+                <img class="certificate-image" src="assets/certificates/uploads/backend-3-testing-flex.jpg" alt="Certificado de Programacion Backend III Testing y Escalabilidad Flex de Coderhouse" loading="lazy" decoding="async">
+                <h4 data-i18n="cert_backend3_title">Backend III: Testing y Escalabilidad Flex</h4>
+                <p data-i18n="cert_backend3_meta">8 horas · 8 semanas · Finalizado 02/06/2026</p>
+              </article>
+              <article class="certificate-mini-item">
+                <img class="certificate-image" src="assets/certificates/uploads/backend-2.png" alt="Certificado de Backend II de Coderhouse" loading="lazy" decoding="async">
+                <h4>Backend II</h4>
+                <p data-i18n="cert_backend2_meta">16 horas · 8 semanas · Finalizado 10/03/2026</p>
+              </article>
+              <article class="certificate-mini-item">
+                <img class="certificate-image" src="assets/certificates/uploads/backend-1.png" alt="Certificado de Programacion Backend I de Coderhouse" loading="lazy" decoding="async">
+                <h4 data-i18n="cert_backend1_title">Programacion Backend I</h4>
+                <p data-i18n="cert_backend1_meta">18 horas · 9 semanas · Finalizado 05/01/2026</p>
+              </article>
+            </div>
+          </details>
+
+          <details class="prompt-card education-cluster">
+            <summary>
+              <span class="prompt-title">Coderhouse</span>
+              <h3 data-i18n="cluster_qa_title">Testing QA</h3>
+              <span class="cluster-count" data-i18n="cluster_qa_count">1 certificado</span>
+            </summary>
+            <div class="certificate-mini-grid">
+              <article class="certificate-mini-item">
+                <img class="certificate-image" src="assets/certificates/uploads/testing-qa.jpg" alt="Certificado de Proyeccion Profesional en Testing QA de Coderhouse" loading="lazy" decoding="async">
+                <h4 data-i18n="cert_qa_title">Proyeccion Profesional en Testing QA</h4>
+                <p data-i18n="cert_qa_meta">Workshop certificado · Completado 08/04/2026</p>
+              </article>
+            </div>
+          </details>
         </div>
       </section>
 
@@ -464,10 +481,10 @@
           </p>
         </div>
         <div class="cta-actions">
-          <a class="button button-primary" href="mailto:exedear95@gmail.com">Escribirme por email</a>
-          <a class="button button-secondary" href="https://wa.me/543446595326" target="_blank" rel="noreferrer">Hablar por WhatsApp</a>
-          <a class="button button-secondary" href="https://www.linkedin.com/in/exequiel-dearmas/" target="_blank" rel="noreferrer">Ver LinkedIn</a>
-          <a class="button button-secondary" href="https://github.com/Edxear" target="_blank" rel="noreferrer">Ver GitHub</a>
+          <a class="button button-primary" href="mailto:exedear95@gmail.com" data-i18n="cta_email">Escribirme por email</a>
+          <a class="button button-secondary" href="https://wa.me/543446595326" target="_blank" rel="noreferrer" data-i18n="cta_whatsapp">Hablar por WhatsApp</a>
+          <a class="button button-secondary" href="https://www.linkedin.com/in/exequiel-dearmas/" target="_blank" rel="noreferrer" data-i18n="cta_linkedin">Ver LinkedIn</a>
+          <a class="button button-secondary" href="https://github.com/Edxear" target="_blank" rel="noreferrer" data-i18n="cta_github">Ver GitHub</a>
         </div>
       </section>
     </main>
