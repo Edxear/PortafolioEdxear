@@ -641,11 +641,10 @@ const applyTheme = (theme) => {
   }
 };
 
-const storedTheme = localStorage.getItem(THEME_KEY);
-applyTheme(storedTheme || getSystemTheme());
+applyTheme("light");
+localStorage.setItem(THEME_KEY, "light");
 
-const storedStyle = localStorage.getItem(STYLE_KEY);
-applyVisualStyle(storedStyle || "default", true);
+applyVisualStyle("argentina", true);
 
 const storedLanguage = localStorage.getItem(LANG_KEY);
 applyLanguage(storedLanguage || detectLanguage(), true);
