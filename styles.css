@@ -617,7 +617,7 @@ body[data-style="argentina"][data-theme="dark"] .argentina-field-lines {
 
 body[data-style="argentina"] .player-points {
   display: block;
-  position: fixed;
+  position: absolute;
   inset: 0;
   list-style: none;
   margin: 0;
@@ -1707,5 +1707,11 @@ body[data-theme="dark"] .project-pitch {
     --header-border: rgba(255, 139, 61, 0.28);
     --topnav-link: #ffc9a1;
     --topnav-link-hover: #fff0e6;
+  }
+}
+
+@media (max-width: 1320px) {
+  .player-points {
+    display: none !important;
   }
 }
