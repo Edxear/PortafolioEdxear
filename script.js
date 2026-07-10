@@ -203,6 +203,8 @@ const applyVisualStyle = (style, shouldPersist = true) => {
     document.body.removeAttribute("data-style");
   }
 
+  initParticles(document.body.getAttribute("data-theme") || "light");
+
   if (styleToggle) {
     const isArgentina = currentStyle === "argentina";
     styleToggle.setAttribute("aria-pressed", String(isArgentina));
@@ -544,9 +546,14 @@ const initParticles = (theme) => {
   }
 
   const isDark = theme === "dark";
+  const isArgentina = document.body.getAttribute("data-style") === "argentina";
   const isTouch = window.matchMedia("(hover: none), (pointer: coarse)").matches;
-  const particleColor = isDark ? "#ff9447" : "#d94e1a";
-  const lineColor = isDark ? "#ff7a2f" : "#e96f25";
+  const particleColor = isArgentina
+    ? (isDark ? "#9fdfff" : "#0f1720")
+    : (isDark ? "#ff9447" : "#d94e1a");
+  const lineColor = isArgentina
+    ? (isDark ? "#7bcfff" : "#121821")
+    : (isDark ? "#ff7a2f" : "#e96f25");
 
   particlesRoot.innerHTML = "";
   window.particlesJS("particles-js", {
@@ -565,7 +572,7 @@ const initParticles = (theme) => {
         type: "circle",
       },
       opacity: {
-        value: isDark ? 0.34 : 0.3,
+        value: isArgentina ? (isDark ? 0.4 : 0.36) : (isDark ? 0.34 : 0.3),
         random: true,
       },
       size: {
@@ -576,7 +583,7 @@ const initParticles = (theme) => {
         enable: true,
         distance: isTouch ? 118 : 144,
         color: lineColor,
-        opacity: isDark ? 0.32 : 0.24,
+        opacity: isArgentina ? (isDark ? 0.34 : 0.3) : (isDark ? 0.32 : 0.24),
         width: 1,
       },
       move: {
@@ -606,7 +613,7 @@ const initParticles = (theme) => {
         grab: {
           distance: 168,
           line_linked: {
-            opacity: isDark ? 0.42 : 0.32,
+            opacity: isArgentina ? (isDark ? 0.42 : 0.38) : (isDark ? 0.42 : 0.32),
           },
         },
         push: {

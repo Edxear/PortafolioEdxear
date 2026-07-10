@@ -568,6 +568,126 @@ body[data-style="argentina"] .button-primary {
   min-height: 36rem;
 }
 
+.argentina-field-lines,
+.player-points {
+  display: none;
+}
+
+body[data-style="argentina"] .hero-stage {
+  overflow: hidden;
+}
+
+body[data-style="argentina"] .argentina-field-lines {
+  display: block;
+  position: absolute;
+  inset: 4% 2% 5% 2%;
+  border-radius: 24px;
+  border: 1px solid color-mix(in srgb, #0f1720 28%, transparent);
+  background:
+    repeating-linear-gradient(
+      115deg,
+      rgba(16, 24, 34, 0.36) 0,
+      rgba(16, 24, 34, 0.36) 2px,
+      transparent 2px,
+      transparent 24px
+    );
+  opacity: 0.38;
+  animation: field-lines-pan 18s linear infinite;
+}
+
+body[data-style="argentina"][data-theme="dark"] .argentina-field-lines {
+  border-color: color-mix(in srgb, #8ed9ff 30%, transparent);
+  background:
+    repeating-linear-gradient(
+      115deg,
+      rgba(142, 217, 255, 0.35) 0,
+      rgba(142, 217, 255, 0.35) 2px,
+      transparent 2px,
+      transparent 22px
+    );
+  opacity: 0.45;
+}
+
+body[data-style="argentina"] .player-points {
+  display: block;
+  position: absolute;
+  inset: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+body[data-style="argentina"] .player-point {
+  position: absolute;
+  left: var(--x, 10%);
+  top: var(--y, 10%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.46rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, #0f1720 24%, transparent);
+  background: rgba(255, 255, 255, 0.85);
+  color: #0b2438;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.64rem;
+  font-weight: 700;
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.15);
+  animation: player-marker-float 7s ease-in-out infinite;
+  animation-delay: var(--d, 0s);
+  max-width: 13.8rem;
+  white-space: nowrap;
+}
+
+body[data-style="argentina"][data-theme="dark"] .player-point {
+  border-color: color-mix(in srgb, #8ed9ff 34%, transparent);
+  background: rgba(8, 34, 52, 0.9);
+  color: #dff5ff;
+}
+
+body[data-style="argentina"] .jersey-number {
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #0f1b27;
+  background: linear-gradient(145deg, #ffd23f, #ffeb95);
+}
+
+body[data-style="argentina"][data-theme="dark"] .jersey-number {
+  color: #122536;
+  background: linear-gradient(145deg, #ffe079, #ffd23f);
+}
+
+body[data-style="argentina"] .hero h1,
+body[data-style="argentina"] .section-heading h2,
+body[data-style="argentina"] .topnav a,
+body[data-style="argentina"] .prompt-title,
+body[data-style="argentina"] .button,
+body[data-style="argentina"] .hero-text,
+body[data-style="argentina"] .section-heading p {
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.7),
+    0 2px 12px rgba(0, 0, 0, 0.16);
+}
+
+body[data-style="argentina"][data-theme="dark"] .hero h1,
+body[data-style="argentina"][data-theme="dark"] .section-heading h2,
+body[data-style="argentina"][data-theme="dark"] .topnav a,
+body[data-style="argentina"][data-theme="dark"] .prompt-title,
+body[data-style="argentina"][data-theme="dark"] .button,
+body[data-style="argentina"][data-theme="dark"] .hero-text,
+body[data-style="argentina"][data-theme="dark"] .section-heading p {
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.45),
+    0 2px 14px rgba(0, 0, 0, 0.4);
+}
+
 .hero-stage::before,
 .hero-stage::after {
   display: none;
@@ -1331,6 +1451,25 @@ body[data-theme="dark"] .project-pitch {
   }
 }
 
+@keyframes field-lines-pan {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 140px 0;
+  }
+}
+
+@keyframes player-marker-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
 @keyframes certificate-reveal {
   0% {
     opacity: 0;
@@ -1501,6 +1640,10 @@ body[data-theme="dark"] .project-pitch {
     display: grid;
     align-content: end;
     min-height: auto;
+  }
+
+  .player-points {
+    display: none !important;
   }
 
   .hero-stage::before,
