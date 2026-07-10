@@ -574,7 +574,7 @@ body[data-style="argentina"] .button-primary {
 }
 
 body[data-style="argentina"] .hero-stage {
-  overflow: hidden;
+  overflow: visible;
 }
 
 body[data-style="argentina"] .argentina-field-lines {
@@ -610,13 +610,13 @@ body[data-style="argentina"][data-theme="dark"] .argentina-field-lines {
 
 body[data-style="argentina"] .player-points {
   display: block;
-  position: absolute;
+  position: fixed;
   inset: 0;
   list-style: none;
   margin: 0;
   padding: 0;
   pointer-events: none;
-  z-index: 1;
+  z-index: 3;
 }
 
 body[data-style="argentina"] .player-point {
@@ -634,7 +634,7 @@ body[data-style="argentina"] .player-point {
   font-family: "Space Grotesk", sans-serif;
   font-size: 0.64rem;
   font-weight: 700;
-  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 9px 24px rgba(0, 0, 0, 0.2);
   animation: player-marker-float 7s ease-in-out infinite;
   animation-delay: var(--d, 0s);
   max-width: 13.8rem;
@@ -643,8 +643,11 @@ body[data-style="argentina"] .player-point {
 
 body[data-style="argentina"][data-theme="dark"] .player-point {
   border-color: color-mix(in srgb, #8ed9ff 34%, transparent);
-  background: rgba(8, 34, 52, 0.9);
+  background: rgba(8, 34, 52, 0.94);
   color: #dff5ff;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.35),
+    0 14px 28px rgba(0, 0, 0, 0.48);
 }
 
 body[data-style="argentina"] .jersey-number {
@@ -684,8 +687,9 @@ body[data-style="argentina"][data-theme="dark"] .button,
 body[data-style="argentina"][data-theme="dark"] .hero-text,
 body[data-style="argentina"][data-theme="dark"] .section-heading p {
   text-shadow:
-    0 1px 0 rgba(0, 0, 0, 0.45),
-    0 2px 14px rgba(0, 0, 0, 0.4);
+    0 1px 0 rgba(0, 0, 0, 0.62),
+    0 3px 18px rgba(0, 0, 0, 0.64),
+    0 0 1px rgba(0, 0, 0, 0.8);
 }
 
 .hero-stage::before,
