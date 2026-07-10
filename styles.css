@@ -89,6 +89,11 @@ body[data-style="argentina"][data-theme="dark"] {
   --shadow-lg: 0 28px 70px rgba(0, 0, 0, 0.62);
 }
 
+body[data-style="argentina"][data-theme="dark"] {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -575,7 +580,8 @@ body[data-style="argentina"] .button-primary {
   min-height: 36rem;
 }
 
-.argentina-field-lines,
+.world-stars,
+.afa-badges,
 .player-points {
   display: none;
 }
@@ -584,35 +590,92 @@ body[data-style="argentina"] .hero-stage {
   overflow: visible;
 }
 
-body[data-style="argentina"] .argentina-field-lines {
+body[data-style="argentina"] .world-stars {
   display: block;
   position: absolute;
-  inset: 4% 2% 5% 2%;
-  border-radius: 24px;
-  border: 1px solid color-mix(in srgb, #0f1720 28%, transparent);
-  background:
-    repeating-linear-gradient(
-      115deg,
-      rgba(16, 24, 34, 0.36) 0,
-      rgba(16, 24, 34, 0.36) 2px,
-      transparent 2px,
-      transparent 24px
-    );
-  opacity: 0.38;
-  animation: field-lines-pan 18s linear infinite;
+  left: 50%;
+  top: 5.5rem;
+  transform: translateX(-50%);
+  display: inline-flex;
+  gap: 0.55rem;
+  z-index: 4;
 }
 
-body[data-style="argentina"][data-theme="dark"] .argentina-field-lines {
-  border-color: color-mix(in srgb, #8ed9ff 30%, transparent);
+.world-star-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.28rem 0.52rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent) 42%, var(--surface-border));
+  background: color-mix(in srgb, var(--surface-solid) 84%, transparent);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
+}
+
+.world-star-icon {
+  color: #ffd23f;
+  font-size: 0.82rem;
+  line-height: 1;
+}
+
+.world-star-year {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.67rem;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  color: var(--text);
+}
+
+body[data-style="argentina"][data-theme="dark"] .world-star-chip {
+  background: rgba(8, 34, 52, 0.92);
+  border-color: color-mix(in srgb, #8ed9ff 46%, transparent);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.38),
+    0 12px 22px rgba(0, 0, 0, 0.5);
+}
+
+body[data-style="argentina"] .afa-badges {
+  display: block;
+  position: absolute;
+  inset: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+body[data-style="argentina"] .afa-badge {
+  position: absolute;
+  left: var(--x, 10%);
+  top: var(--y, 10%);
+  width: 2.35rem;
+  height: 2.8rem;
+  border-radius: 46% 46% 60% 60% / 40% 40% 72% 72%;
+  border: 1px solid color-mix(in srgb, #0f1720 30%, transparent);
   background:
-    repeating-linear-gradient(
-      115deg,
-      rgba(142, 217, 255, 0.35) 0,
-      rgba(142, 217, 255, 0.35) 2px,
-      transparent 2px,
-      transparent 22px
-    );
-  opacity: 0.45;
+    linear-gradient(180deg, rgba(90, 193, 247, 0.92), rgba(25, 130, 193, 0.92));
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  display: grid;
+  place-items: center;
+  animation: player-marker-float 9s ease-in-out infinite;
+  animation-delay: var(--d, 0s);
+}
+
+body[data-style="argentina"] .afa-badge span {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #fff7da;
+}
+
+body[data-style="argentina"][data-theme="dark"] .afa-badge {
+  border-color: color-mix(in srgb, #8ed9ff 44%, transparent);
+  background: linear-gradient(180deg, rgba(52, 168, 230, 0.95), rgba(16, 88, 136, 0.95));
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.42),
+    0 14px 28px rgba(0, 0, 0, 0.52);
 }
 
 body[data-style="argentina"] .player-points {
@@ -694,9 +757,18 @@ body[data-style="argentina"][data-theme="dark"] .button,
 body[data-style="argentina"][data-theme="dark"] .hero-text,
 body[data-style="argentina"][data-theme="dark"] .section-heading p {
   text-shadow:
-    0 1px 0 rgba(0, 0, 0, 0.62),
-    0 3px 18px rgba(0, 0, 0, 0.64),
-    0 0 1px rgba(0, 0, 0, 0.8);
+    0 1px 0 rgba(0, 0, 0, 0.7),
+    0 4px 22px rgba(0, 0, 0, 0.72),
+    0 0 2px rgba(0, 0, 0, 0.9);
+}
+
+body[data-style="argentina"][data-theme="dark"] .hero-text,
+body[data-style="argentina"][data-theme="dark"] .section-heading p,
+body[data-style="argentina"][data-theme="dark"] .info-card p,
+body[data-style="argentina"][data-theme="dark"] .prompt-card p,
+body[data-style="argentina"][data-theme="dark"] .footer p {
+  color: #dff2ff;
+  font-weight: 520;
 }
 
 .hero-stage::before,
@@ -1657,6 +1729,11 @@ body[data-theme="dark"] .project-pitch {
     display: none !important;
   }
 
+  .world-stars,
+  .afa-badges {
+    display: none !important;
+  }
+
   .hero-stage::before,
   .hero-stage::after {
     display: none;
@@ -1712,6 +1789,11 @@ body[data-theme="dark"] .project-pitch {
 
 @media (max-width: 1320px) {
   .player-points {
+    display: none !important;
+  }
+
+  .world-stars,
+  .afa-badges {
     display: none !important;
   }
 }
