@@ -217,6 +217,13 @@ body[data-style="argentina"] .page-shell::before {
   margin: 0 auto;
 }
 
+.topbar,
+main,
+.footer {
+  position: relative;
+  z-index: 2;
+}
+
 .topbar {
   width: min(calc(100% - 2.4rem), 1020px);
   position: sticky;
@@ -616,7 +623,7 @@ body[data-style="argentina"] .player-points {
   margin: 0;
   padding: 0;
   pointer-events: none;
-  z-index: 3;
+  z-index: 0;
 }
 
 body[data-style="argentina"] .player-point {
