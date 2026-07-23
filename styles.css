@@ -47,52 +47,6 @@ body[data-theme="dark"] {
   --topnav-link-hover: #fff0e6;
 }
 
-body[data-style="argentina"] {
-  --bg: #e9f8ff;
-  --bg-soft: #f6fdff;
-  --surface: rgba(255, 255, 255, 0.9);
-  --surface-solid: #ffffff;
-  --surface-muted: #e6f6ff;
-  --surface-border: rgba(28, 123, 189, 0.26);
-  --text: #08253b;
-  --muted: #3f5f73;
-  --accent: #46b4ea;
-  --accent-2: #1f8ed2;
-  --accent-3: #ffd23f;
-  --accent-4: #0a6ea8;
-  --header-surface: rgba(255, 255, 255, 0.88);
-  --header-border: rgba(28, 123, 189, 0.32);
-  --topnav-link: #13527d;
-  --topnav-link-hover: #08253b;
-  --shadow-soft: 0 14px 40px rgba(10, 82, 128, 0.16);
-  --shadow-lg: 0 28px 70px rgba(8, 51, 82, 0.2);
-}
-
-body[data-style="argentina"][data-theme="dark"] {
-  --bg: #041520;
-  --bg-soft: #082336;
-  --surface: rgba(7, 30, 46, 0.84);
-  --surface-solid: #0a2a3f;
-  --surface-muted: #133a56;
-  --surface-border: rgba(120, 205, 255, 0.3);
-  --text: #e7f8ff;
-  --muted: #9bc8de;
-  --accent: #59c3ff;
-  --accent-2: #36a8e6;
-  --accent-3: #ffd85a;
-  --accent-4: #8ad8ff;
-  --header-surface: rgba(6, 24, 38, 0.88);
-  --header-border: rgba(120, 205, 255, 0.34);
-  --topnav-link: #bdeaff;
-  --topnav-link-hover: #f0fbff;
-  --shadow-soft: 0 14px 40px rgba(0, 0, 0, 0.45);
-  --shadow-lg: 0 28px 70px rgba(0, 0, 0, 0.62);
-}
-
-body[data-style="argentina"][data-theme="dark"] {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-}
 
 * {
   box-sizing: border-box;
@@ -134,25 +88,6 @@ body::after {
   opacity: 0.45;
 }
 
-body[data-style="argentina"]::before {
-  background:
-    radial-gradient(circle at 14% 16%, color-mix(in srgb, var(--accent) 28%, transparent), transparent 36%),
-    repeating-linear-gradient(
-      -20deg,
-      color-mix(in srgb, #8ed9ff 28%, transparent) 0,
-      color-mix(in srgb, #8ed9ff 28%, transparent) 34px,
-      transparent 34px,
-      transparent 74px
-    );
-  opacity: 0.9;
-}
-
-body[data-style="argentina"]::after {
-  background:
-    radial-gradient(circle at 84% 12%, color-mix(in srgb, var(--accent-3) 34%, transparent), transparent 35%),
-    radial-gradient(circle at 75% 80%, color-mix(in srgb, #9fdfff 28%, transparent), transparent 30%);
-  opacity: 0.52;
-}
 
 a {
   color: inherit;
@@ -181,11 +116,6 @@ a {
   background: linear-gradient(160deg, color-mix(in srgb, var(--bg) 80%, transparent), color-mix(in srgb, var(--bg-soft) 64%, transparent));
 }
 
-body[data-style="argentina"] .page-shell::before {
-  background:
-    linear-gradient(170deg, color-mix(in srgb, #e8f8ff 80%, transparent), color-mix(in srgb, #d3efff 54%, transparent)),
-    radial-gradient(circle at 8% 74%, color-mix(in srgb, var(--accent-3) 18%, transparent), transparent 28%);
-}
 
 .ambient {
   position: fixed;
@@ -359,20 +289,6 @@ main,
   color: var(--accent-3);
 }
 
-body[data-style="argentina"] .style-toggle {
-  border-color: color-mix(in srgb, var(--accent) 48%, var(--header-border));
-  background: color-mix(in srgb, var(--accent) 16%, var(--surface-solid));
-}
-
-body[data-style="argentina"] .brand-mark {
-  background: linear-gradient(145deg, #58c2ff, #23a2e4);
-  box-shadow: 0 0 0 4px rgba(255, 210, 63, 0.26);
-}
-
-body[data-style="argentina"] .button-primary {
-  background: linear-gradient(125deg, color-mix(in srgb, #58c2ff 42%, transparent), color-mix(in srgb, #23a2e4 42%, transparent), color-mix(in srgb, #ffd23f 44%, transparent));
-  border-color: color-mix(in srgb, #23a2e4 34%, var(--surface-border));
-}
 
 .menu-toggle {
   display: none;
@@ -589,141 +505,9 @@ body[data-style="argentina"] .hero-stage {
   overflow: visible;
 }
 
-body[data-style="argentina"] .world-stars {
-  display: block;
-  position: absolute;
-  left: 50%;
-  top: 5.5rem;
-  transform: translateX(-50%);
-  display: inline-flex;
-  gap: 0.55rem;
-  z-index: 4;
-}
-
-.world-star-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  padding: 0.28rem 0.52rem;
-  border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--accent) 42%, var(--surface-border));
-  background: color-mix(in srgb, var(--surface-solid) 84%, transparent);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
-}
-
-.world-star-icon {
-  color: #ffd23f;
-  font-size: 0.82rem;
-  line-height: 1;
-}
-
-.world-star-year {
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 0.67rem;
-  letter-spacing: 0.06em;
-  font-weight: 700;
-  color: var(--text);
-}
-
-body[data-style="argentina"][data-theme="dark"] .world-star-chip {
-  background: rgba(8, 34, 52, 0.92);
-  border-color: color-mix(in srgb, #8ed9ff 46%, transparent);
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.38),
-    0 12px 22px rgba(0, 0, 0, 0.5);
-}
-
-body[data-style="argentina"] .player-points {
-  display: block;
-  position: absolute;
-  inset: 0;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  pointer-events: none;
-  z-index: 0;
-}
-
-body[data-style="argentina"] .player-point {
-  position: absolute;
-  left: var(--x, 10%);
-  top: var(--y, 10%);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.2rem 0.46rem;
-  border-radius: 999px;
-  border: 1px solid color-mix(in srgb, #0f1720 24%, transparent);
-  background: rgba(255, 255, 255, 0.85);
-  color: #0b2438;
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 0.64rem;
-  font-weight: 700;
-  box-shadow: 0 9px 24px rgba(0, 0, 0, 0.2);
-  animation: player-marker-float 7s ease-in-out infinite;
-  animation-delay: var(--d, 0s);
-  max-width: 13.8rem;
-  white-space: nowrap;
-}
-
-body[data-style="argentina"][data-theme="dark"] .player-point {
-  border-color: color-mix(in srgb, #8ed9ff 34%, transparent);
-  background: rgba(8, 34, 52, 0.94);
-  color: #dff5ff;
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.35),
-    0 14px 28px rgba(0, 0, 0, 0.48);
-}
-
-body[data-style="argentina"] .jersey-number {
-  width: 1.35rem;
-  height: 1.35rem;
-  border-radius: 50%;
-  display: inline-grid;
-  place-items: center;
-  font-size: 0.7rem;
-  font-weight: 800;
-  color: #0f1b27;
-  background: linear-gradient(145deg, #ffd23f, #ffeb95);
-}
-
-body[data-style="argentina"][data-theme="dark"] .jersey-number {
-  color: #122536;
-  background: linear-gradient(145deg, #ffe079, #ffd23f);
-}
-
-body[data-style="argentina"] .hero h1,
-body[data-style="argentina"] .section-heading h2,
-body[data-style="argentina"] .topnav a,
-body[data-style="argentina"] .prompt-title,
-body[data-style="argentina"] .button,
-body[data-style="argentina"] .hero-text,
-body[data-style="argentina"] .section-heading p {
-  text-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.7),
-    0 2px 12px rgba(0, 0, 0, 0.16);
-}
-
-body[data-style="argentina"][data-theme="dark"] .hero h1,
-body[data-style="argentina"][data-theme="dark"] .section-heading h2,
-body[data-style="argentina"][data-theme="dark"] .topnav a,
-body[data-style="argentina"][data-theme="dark"] .prompt-title,
-body[data-style="argentina"][data-theme="dark"] .button,
-body[data-style="argentina"][data-theme="dark"] .hero-text,
-body[data-style="argentina"][data-theme="dark"] .section-heading p {
-  text-shadow:
-    0 1px 0 rgba(0, 0, 0, 0.7),
-    0 4px 22px rgba(0, 0, 0, 0.72),
-    0 0 2px rgba(0, 0, 0, 0.9);
-}
-
-body[data-style="argentina"][data-theme="dark"] .hero-text,
-body[data-style="argentina"][data-theme="dark"] .section-heading p,
-body[data-style="argentina"][data-theme="dark"] .info-card p,
-body[data-style="argentina"][data-theme="dark"] .prompt-card p,
-body[data-style="argentina"][data-theme="dark"] .footer p {
-  color: #dff2ff;
-  font-weight: 520;
+.world-stars,
+.player-points {
+  display: none;
 }
 
 .hero-stage::before,

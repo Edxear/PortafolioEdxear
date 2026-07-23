@@ -4,7 +4,6 @@ const tiltCards = document.querySelectorAll(".tilt-card");
 const menuToggle = document.getElementById("menu-toggle");
 const topNav = document.getElementById("topnav");
 const styleToggle = document.getElementById("style-toggle");
-const styleToggleLabel = styleToggle?.querySelector(".theme-toggle-text");
 const themeToggle = document.getElementById("theme-toggle");
 const themeLabel = themeToggle?.querySelector(".theme-toggle-text");
 const particlesRoot = document.getElementById("particles-js");
@@ -33,12 +32,13 @@ const translations = {
     hero_cta_about: "Sobre mi",
     hero_cta_education: "Ver formacion",
     education_eyebrow: "Formacion y certificados",
-    education_title: "Ruta de aprendizaje construida en web, frontend y backend",
+    education_title: "Ruta de aprendizaje construida en web, frontend, backend y C#",
     education_chip_fullstack: "Full Stack",
     education_chip_backend: "Backend",
     education_chip_python: "Python",
+    education_chip_csharp: "C#",
     education_chip_qa: "QA",
-    education_chip_total: "11 certificaciones finalizadas",
+    education_chip_total: "13 certificaciones finalizadas",
     education_toggle_all_show: "Ver todo",
     education_toggle_all_hide: "Ocultar todo",
     cluster_fullstack_title: "Ruta Full Stack",
@@ -47,6 +47,8 @@ const translations = {
     cluster_python_count: "4 certificados",
     cluster_backend_title: "Ruta Backend",
     cluster_backend_count: "3 certificados",
+    cluster_csharp_title: "Ruta C#",
+    cluster_csharp_count: "2 certificados",
     cluster_qa_title: "Testing QA",
     cluster_qa_count: "1 certificado",
     cert_react_meta: "16 horas · 8 semanas · Finalizado 08/10/2025",
@@ -65,6 +67,10 @@ const translations = {
     cert_backend2_meta: "16 horas · 8 semanas · Finalizado 10/03/2026",
     cert_backend1_title: "Programacion Backend I",
     cert_backend1_meta: "18 horas · 9 semanas · Finalizado 05/01/2026",
+    cert_csharp_basic_title: "C# esencial",
+    cert_csharp_basic_meta: "Certificacion complementaria · C#",
+    cert_csharp_advanced_title: "C# avanzado",
+    cert_csharp_advanced_meta: "Certificacion complementaria · C# avanzado",
     cert_qa_title: "Proyeccion Profesional en Testing QA",
     cert_qa_meta: "Workshop certificado · Completado 08/04/2026",
     cta_email: "Escribirme por email",
@@ -89,12 +95,13 @@ const translations = {
     hero_cta_about: "About me",
     hero_cta_education: "View education",
     education_eyebrow: "Education and certificates",
-    education_title: "Learning path built across web, frontend and backend",
+    education_title: "Learning path built across web, frontend, backend and C#",
     education_chip_fullstack: "Full Stack",
     education_chip_backend: "Backend",
     education_chip_python: "Python",
+    education_chip_csharp: "C#",
     education_chip_qa: "QA",
-    education_chip_total: "11 completed certificates",
+    education_chip_total: "13 completed certificates",
     education_toggle_all_show: "Show all",
     education_toggle_all_hide: "Hide all",
     cluster_fullstack_title: "Full Stack Track",
@@ -103,6 +110,8 @@ const translations = {
     cluster_python_count: "4 certificates",
     cluster_backend_title: "Backend Track",
     cluster_backend_count: "3 certificates",
+    cluster_csharp_title: "C# Track",
+    cluster_csharp_count: "2 certificates",
     cluster_qa_title: "QA Testing",
     cluster_qa_count: "1 certificate",
     cert_react_meta: "16 hours · 8 weeks · Completed 10/08/2025",
@@ -121,6 +130,10 @@ const translations = {
     cert_backend2_meta: "16 hours · 8 weeks · Completed 03/10/2026",
     cert_backend1_title: "Backend Programming I",
     cert_backend1_meta: "18 hours · 9 weeks · Completed 01/05/2026",
+    cert_csharp_basic_title: "C# essentials",
+    cert_csharp_basic_meta: "Complementary certificate · C#",
+    cert_csharp_advanced_title: "Advanced C#",
+    cert_csharp_advanced_meta: "Complementary certificate · Advanced C#",
     cert_qa_title: "Professional Projection in QA Testing",
     cert_qa_meta: "Certified workshop · Completed 04/08/2026",
     cta_email: "Email me",
@@ -145,12 +158,13 @@ const translations = {
     hero_cta_about: "Sobre mim",
     hero_cta_education: "Ver formacao",
     education_eyebrow: "Formacao e certificados",
-    education_title: "Trilha de aprendizado em web, frontend e backend",
+    education_title: "Trilha de aprendizado em web, frontend, backend e C#",
     education_chip_fullstack: "Full Stack",
     education_chip_backend: "Backend",
     education_chip_python: "Python",
+    education_chip_csharp: "C#",
     education_chip_qa: "QA",
-    education_chip_total: "11 certificados concluidos",
+    education_chip_total: "13 certificados concluidos",
     education_toggle_all_show: "Ver tudo",
     education_toggle_all_hide: "Ocultar tudo",
     cluster_fullstack_title: "Trilha Full Stack",
@@ -159,6 +173,8 @@ const translations = {
     cluster_python_count: "4 certificados",
     cluster_backend_title: "Trilha Backend",
     cluster_backend_count: "3 certificados",
+    cluster_csharp_title: "Trilha C#",
+    cluster_csharp_count: "2 certificados",
     cluster_qa_title: "Testing QA",
     cluster_qa_count: "1 certificado",
     cert_react_meta: "16 horas · 8 semanas · Concluido em 08/10/2025",
@@ -177,6 +193,10 @@ const translations = {
     cert_backend2_meta: "16 horas · 8 semanas · Concluido em 10/03/2026",
     cert_backend1_title: "Programacao Backend I",
     cert_backend1_meta: "18 horas · 9 semanas · Concluido em 05/01/2026",
+    cert_csharp_basic_title: "C# essencial",
+    cert_csharp_basic_meta: "Certificacao complementar · C#",
+    cert_csharp_advanced_title: "C# avancado",
+    cert_csharp_advanced_meta: "Certificacao complementar · C# avancado",
     cert_qa_title: "Projecao Profissional em Testing QA",
     cert_qa_meta: "Workshop certificado · Concluido em 08/04/2026",
     cta_email: "Escrever por email",
@@ -195,24 +215,9 @@ const translations = {
 };
 
 const applyVisualStyle = (style, shouldPersist = true) => {
-  currentStyle = style === "argentina" ? "argentina" : "default";
-
-  if (currentStyle === "argentina") {
-    document.body.setAttribute("data-style", "argentina");
-  } else {
-    document.body.removeAttribute("data-style");
-  }
-
+  currentStyle = "default";
+  document.body.removeAttribute("data-style");
   initParticles(document.body.getAttribute("data-theme") || "light");
-
-  if (styleToggle) {
-    const isArgentina = currentStyle === "argentina";
-    styleToggle.setAttribute("aria-pressed", String(isArgentina));
-    styleToggle.setAttribute("aria-label", getText("style_toggle"));
-    if (styleToggleLabel) {
-      styleToggleLabel.textContent = isArgentina ? getText("style_mode_classic") : getText("style_mode_argentina");
-    }
-  }
 
   if (shouldPersist) {
     localStorage.setItem(STYLE_KEY, currentStyle);
@@ -641,10 +646,10 @@ const applyTheme = (theme) => {
   }
 };
 
-applyTheme("light");
-localStorage.setItem(THEME_KEY, "light");
+const storedTheme = localStorage.getItem(THEME_KEY);
+applyTheme(storedTheme || getSystemTheme());
 
-applyVisualStyle("argentina", true);
+applyVisualStyle("default", true);
 
 const storedLanguage = localStorage.getItem(LANG_KEY);
 applyLanguage(storedLanguage || detectLanguage(), true);
@@ -670,13 +675,6 @@ if (themeToggle) {
   } else if (typeof mediaQuery.addListener === "function") {
     mediaQuery.addListener(onSystemThemeChange);
   }
-}
-
-if (styleToggle) {
-  styleToggle.addEventListener("click", () => {
-    const nextStyle = currentStyle === "argentina" ? "default" : "argentina";
-    applyVisualStyle(nextStyle, true);
-  });
 }
 
 if (menuToggle && topNav) {

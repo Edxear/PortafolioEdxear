@@ -69,3 +69,6 @@ Hay dos opciones:
 
 ## Fecha de registro
 - 2026-07-10
+
+## Referencia adicional
+- Version Mundialista guardada en: [tema-mundialista-referencia.md](tema-mundialista-referencia.md)
