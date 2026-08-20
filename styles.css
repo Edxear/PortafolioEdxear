@@ -872,10 +872,50 @@ body[data-style="argentina"] .hero-stage {
 }
 
 .certificate-mini-item {
+  position: relative;
   border: 1px solid var(--surface-border);
   background: color-mix(in srgb, var(--surface-solid) 88%, transparent);
   border-radius: 14px;
   padding: 0.72rem;
+  overflow: hidden;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.certificate-mini-item:hover,
+.certificate-mini-item:focus-within {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent) 36%, var(--surface-border));
+  box-shadow: 0 14px 30px rgba(9, 49, 97, 0.09);
+}
+
+.certificate-mini-item::after {
+  content: "Ampliar";
+  position: absolute;
+  right: 0.7rem;
+  bottom: 0.7rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.8rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(10, 12, 16, 0.74);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 180ms ease, transform 180ms ease;
+  pointer-events: none;
+}
+
+.certificate-mini-item:hover::after,
+.certificate-mini-item:focus-within::after {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .certificate-mini-item h4 {
@@ -1066,6 +1106,7 @@ body[data-style="argentina"] .hero-stage {
   background: color-mix(in srgb, var(--surface-solid) 92%, transparent);
   cursor: zoom-in;
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  filter: saturate(1) contrast(1.02);
 }
 
 .certificate-zoom-trigger:hover,
@@ -1121,9 +1162,12 @@ body[data-style="argentina"] .hero-stage {
 .certificate-modal-content {
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
   width: min(90vw, 920px);
   max-height: 90vh;
-  overflow: hidden;
+  overflow-y: auto;
   border-radius: 26px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: linear-gradient(180deg, color-mix(in srgb, var(--surface-solid) 96%, transparent), color-mix(in srgb, var(--surface) 94%, transparent));
@@ -1152,7 +1196,7 @@ body[data-style="argentina"] .hero-stage {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-height: 72vh;
+  max-height: min(72vh, 760px);
   object-fit: contain;
   border-radius: 18px;
   border: 1px solid color-mix(in srgb, var(--surface-border) 80%, transparent);
@@ -1163,7 +1207,7 @@ body[data-style="argentina"] .hero-stage {
 .certificate-modal-copy {
   position: relative;
   z-index: 1;
-  padding: 1rem 0.25rem 0.4rem;
+  padding: 0.2rem 0.25rem 0.4rem;
 }
 
 .certificate-modal-copy h3 {
@@ -1213,12 +1257,13 @@ body.modal-open {
 
   .certificate-modal-content {
     width: min(94vw, 760px);
+    max-height: 92vh;
     padding: 0.7rem;
     border-radius: 18px;
   }
 
   .certificate-modal-copy {
-    padding-top: 0.8rem;
+    padding-top: 0.2rem;
   }
 }
 
