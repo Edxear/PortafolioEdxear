@@ -774,6 +774,64 @@ if (educationClusters.length > 0) {
   }
 }
 
+const certificateModal = document.getElementById("certificate-modal");
+const certificateModalImage = document.getElementById("certificate-modal-image");
+const certificateModalTitle = document.getElementById("certificate-modal-title");
+const certificateModalMeta = document.getElementById("certificate-modal-meta");
+const certificateZoomTriggers = document.querySelectorAll(".certificate-zoom-trigger");
+const certificateModalCloseButton = document.querySelector(".certificate-modal-close");
+
+const openCertificateModal = (sourceImage) => {
+  if (!certificateModal || !certificateModalImage || !certificateModalTitle || !certificateModalMeta) {
+    return;
+  }
+
+  const title = sourceImage.dataset.title || sourceImage.alt || "Certificado";
+  const meta = sourceImage.dataset.meta || sourceImage.closest(".certificate-mini-item")?.querySelector("p")?.textContent || "";
+
+  certificateModalImage.src = sourceImage.src;
+  certificateModalImage.alt = sourceImage.alt || title;
+  certificateModalTitle.textContent = title;
+  certificateModalMeta.textContent = meta;
+  certificateModal.classList.add("is-open");
+  certificateModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+};
+
+const closeCertificateModal = () => {
+  if (!certificateModal) {
+    return;
+  }
+
+  certificateModal.classList.remove("is-open");
+  certificateModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+};
+
+if (certificateZoomTriggers.length > 0) {
+  certificateZoomTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => openCertificateModal(trigger));
+  });
+}
+
+if (certificateModalCloseButton) {
+  certificateModalCloseButton.addEventListener("click", closeCertificateModal);
+}
+
+if (certificateModal) {
+  certificateModal.addEventListener("click", (event) => {
+    if (event.target instanceof HTMLElement && event.target.matches("[data-close-certificate-modal]")) {
+      closeCertificateModal();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && certificateModal.classList.contains("is-open")) {
+      closeCertificateModal();
+    }
+  });
+}
+
 const revealVariants = ["reveal-up", "reveal-left", "reveal-right", "reveal-zoom"];
 
 const revealNode = (node) => {
