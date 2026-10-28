@@ -789,13 +789,14 @@ const openCertificateModal = (sourceImage) => {
 
   const title = sourceImage.dataset.title || sourceImage.alt || "Certificado";
   const meta = sourceImage.dataset.meta || sourceImage.closest(".certificate-mini-item")?.querySelector("p")?.textContent || "";
-  const isPdf = sourceImage.src.toLowerCase().endsWith(".pdf");
+  const pdfSource = sourceImage.dataset.pdf || "";
+  const isPdf = Boolean(pdfSource) || sourceImage.src.toLowerCase().endsWith(".pdf") || sourceImage.dataset.kind === "pdf";
 
   certificateModalImage.hidden = isPdf;
   certificateModalPdf.hidden = !isPdf;
 
   if (isPdf) {
-    certificateModalPdf.src = sourceImage.src;
+    certificateModalPdf.src = pdfSource || sourceImage.src;
     certificateModalPdf.classList.add("is-visible");
     certificateModalImage.src = "";
   } else {

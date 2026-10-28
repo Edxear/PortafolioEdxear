@@ -1,0 +1,23 @@
+<svg width="800" height="1100" viewBox="0 0 800 1100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="120" y1="80" x2="700" y2="1020" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E4F1FF"/>
+      <stop offset="1" stop-color="#D8E9FF"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="200" y1="200" x2="620" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A6ED1"/>
+      <stop offset="1" stop-color="#1C7AE7"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1100" rx="52" fill="url(#bg)"/>
+  <path d="M220 120C220 93.4903 242.49 72 269 72H510C543.137 72 570 98.8629 570 132V178H220V120Z" fill="#DBEAFE"/>
+  <path d="M216 175H584C615.137 175 641 200.863 641 232V858C641 894.451 611.451 924 575 924H225C188.549 924 159 894.451 159 858V252C159 208.863 194.863 175 238 175H216Z" fill="white" stroke="#B7D3FD" stroke-width="8"/>
+  <path d="M235 290H565" stroke="#D7E8FF" stroke-width="18" stroke-linecap="round"/>
+  <path d="M235 360H495" stroke="#D7E8FF" stroke-width="18" stroke-linecap="round"/>
+  <path d="M235 430H530" stroke="#D7E8FF" stroke-width="18" stroke-linecap="round"/>
+  <path d="M235 500H478" stroke="#D7E8FF" stroke-width="18" stroke-linecap="round"/>
+  <path d="M231 700C231 660.235 263.235 628 303 628H407C446.765 628 479 660.235 479 700V742C479 781.765 446.765 814 407 814H303C263.235 814 231 781.765 231 742V700Z" fill="url(#accent)"/>
+  <path d="M319 718H391V729H319V718ZM319 754H391V765H319V754ZM319 790H372V801H319V790Z" fill="white" fill-opacity="0.88"/>
+  <path d="M113 836H687C704.673 836 719 850.327 719 868V913C719 930.673 704.673 945 687 945H113C95.3269 945 81 930.673 81 913V868C81 850.327 95.3269 836 113 836Z" fill="#1F6CE6"/>
+  <text x="400" y="892" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="700" fill="white" letter-spacing="6">PDF</text>
+</svg>
