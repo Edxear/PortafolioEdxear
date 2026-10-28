@@ -38,7 +38,7 @@ const translations = {
     education_chip_python: "Python",
     education_chip_csharp: "C#",
     education_chip_qa: "QA",
-    education_chip_total: "18 certificaciones finalizadas",
+    education_chip_total: "21 certificaciones finalizadas",
     education_toggle_all_show: "Ver todo",
     education_toggle_all_hide: "Ocultar todo",
     cluster_fullstack_title: "Ruta Full Stack",
@@ -48,7 +48,7 @@ const translations = {
     cluster_backend_title: "Ruta Backend",
     cluster_backend_count: "3 certificados",
     cluster_csharp_title: "Ruta C#",
-    cluster_csharp_count: "7 certificados",
+    cluster_csharp_count: "10 certificados",
     cluster_qa_title: "Testing QA",
     cluster_qa_count: "1 certificado",
     cert_react_meta: "16 horas · 8 semanas · Finalizado 08/10/2025",
@@ -101,7 +101,7 @@ const translations = {
     education_chip_python: "Python",
     education_chip_csharp: "C#",
     education_chip_qa: "QA",
-    education_chip_total: "18 completed certificates",
+    education_chip_total: "21 completed certificates",
     education_toggle_all_show: "Show all",
     education_toggle_all_hide: "Hide all",
     cluster_fullstack_title: "Full Stack Track",
@@ -111,7 +111,7 @@ const translations = {
     cluster_backend_title: "Backend Track",
     cluster_backend_count: "3 certificates",
     cluster_csharp_title: "C# Track",
-    cluster_csharp_count: "7 certificates",
+    cluster_csharp_count: "10 certificates",
     cluster_qa_title: "QA Testing",
     cluster_qa_count: "1 certificate",
     cert_react_meta: "16 hours · 8 weeks · Completed 10/08/2025",
@@ -164,7 +164,7 @@ const translations = {
     education_chip_python: "Python",
     education_chip_csharp: "C#",
     education_chip_qa: "QA",
-    education_chip_total: "18 certificados concluidos",
+    education_chip_total: "21 certificados concluidos",
     education_toggle_all_show: "Ver tudo",
     education_toggle_all_hide: "Ocultar tudo",
     cluster_fullstack_title: "Trilha Full Stack",
@@ -174,7 +174,7 @@ const translations = {
     cluster_backend_title: "Trilha Backend",
     cluster_backend_count: "3 certificados",
     cluster_csharp_title: "Trilha C#",
-    cluster_csharp_count: "7 certificados",
+    cluster_csharp_count: "10 certificados",
     cluster_qa_title: "Testing QA",
     cluster_qa_count: "1 certificado",
     cert_react_meta: "16 horas · 8 semanas · Concluido em 08/10/2025",
@@ -776,6 +776,7 @@ if (educationClusters.length > 0) {
 
 const certificateModal = document.getElementById("certificate-modal");
 const certificateModalImage = document.getElementById("certificate-modal-image");
+const certificateModalPdf = document.getElementById("certificate-modal-pdf");
 const certificateModalTitle = document.getElementById("certificate-modal-title");
 const certificateModalMeta = document.getElementById("certificate-modal-meta");
 const certificateZoomTriggers = document.querySelectorAll(".certificate-zoom-trigger");
@@ -788,9 +789,22 @@ const openCertificateModal = (sourceImage) => {
 
   const title = sourceImage.dataset.title || sourceImage.alt || "Certificado";
   const meta = sourceImage.dataset.meta || sourceImage.closest(".certificate-mini-item")?.querySelector("p")?.textContent || "";
+  const isPdf = sourceImage.src.toLowerCase().endsWith(".pdf");
 
-  certificateModalImage.src = sourceImage.src;
-  certificateModalImage.alt = sourceImage.alt || title;
+  certificateModalImage.hidden = isPdf;
+  certificateModalPdf.hidden = !isPdf;
+
+  if (isPdf) {
+    certificateModalPdf.src = sourceImage.src;
+    certificateModalPdf.classList.add("is-visible");
+    certificateModalImage.src = "";
+  } else {
+    certificateModalImage.src = sourceImage.src;
+    certificateModalImage.alt = sourceImage.alt || title;
+    certificateModalPdf.src = "";
+    certificateModalPdf.classList.remove("is-visible");
+  }
+
   certificateModalTitle.textContent = title;
   certificateModalMeta.textContent = meta;
   certificateModal.classList.add("is-open");
@@ -806,6 +820,13 @@ const closeCertificateModal = () => {
   certificateModal.classList.remove("is-open");
   certificateModal.setAttribute("aria-hidden", "true");
   document.body.classList.remove("modal-open");
+  if (certificateModalImage) {
+    certificateModalImage.src = "";
+  }
+  if (certificateModalPdf) {
+    certificateModalPdf.src = "";
+    certificateModalPdf.classList.remove("is-visible");
+  }
 };
 
 if (certificateZoomTriggers.length > 0) {

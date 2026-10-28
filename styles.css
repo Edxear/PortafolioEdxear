@@ -1191,7 +1191,8 @@ body[data-style="argentina"] .hero-stage {
   background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 26%, transparent), transparent 32%, color-mix(in srgb, var(--accent-3) 18%, transparent));
 }
 
-.certificate-modal-content img {
+.certificate-modal-content img,
+.certificate-modal-content iframe {
   display: block;
   position: relative;
   z-index: 1;
@@ -1202,6 +1203,16 @@ body[data-style="argentina"] .hero-stage {
   border: 1px solid color-mix(in srgb, var(--surface-border) 80%, transparent);
   background: color-mix(in srgb, var(--surface-solid) 96%, transparent);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+}
+
+.certificate-modal-content iframe {
+  min-height: 70vh;
+  border: 0;
+  display: none;
+}
+
+.certificate-modal-content iframe.is-visible {
+  display: block;
 }
 
 .certificate-modal-copy {
