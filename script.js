@@ -776,7 +776,6 @@ if (educationClusters.length > 0) {
 
 const certificateModal = document.getElementById("certificate-modal");
 const certificateModalImage = document.getElementById("certificate-modal-image");
-const certificateModalPdf = document.getElementById("certificate-modal-pdf");
 const certificateModalTitle = document.getElementById("certificate-modal-title");
 const certificateModalMeta = document.getElementById("certificate-modal-meta");
 const certificateZoomTriggers = document.querySelectorAll(".certificate-zoom-trigger");
@@ -789,23 +788,9 @@ const openCertificateModal = (sourceImage) => {
 
   const title = sourceImage.dataset.title || sourceImage.alt || "Certificado";
   const meta = sourceImage.dataset.meta || sourceImage.closest(".certificate-mini-item")?.querySelector("p")?.textContent || "";
-  const pdfSource = sourceImage.dataset.pdf || "";
-  const isPdf = Boolean(pdfSource) || sourceImage.src.toLowerCase().endsWith(".pdf") || sourceImage.dataset.kind === "pdf";
 
-  certificateModalImage.hidden = isPdf;
-  certificateModalPdf.hidden = !isPdf;
-
-  if (isPdf) {
-    certificateModalPdf.src = pdfSource || sourceImage.src;
-    certificateModalPdf.classList.add("is-visible");
-    certificateModalImage.src = "";
-  } else {
-    certificateModalImage.src = sourceImage.src;
-    certificateModalImage.alt = sourceImage.alt || title;
-    certificateModalPdf.src = "";
-    certificateModalPdf.classList.remove("is-visible");
-  }
-
+  certificateModalImage.src = sourceImage.src;
+  certificateModalImage.alt = sourceImage.alt || title;
   certificateModalTitle.textContent = title;
   certificateModalMeta.textContent = meta;
   certificateModal.classList.add("is-open");
@@ -823,10 +808,6 @@ const closeCertificateModal = () => {
   document.body.classList.remove("modal-open");
   if (certificateModalImage) {
     certificateModalImage.src = "";
-  }
-  if (certificateModalPdf) {
-    certificateModalPdf.src = "";
-    certificateModalPdf.classList.remove("is-visible");
   }
 };
 
